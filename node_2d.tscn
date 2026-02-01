@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ubl05tbxru7l"]
+
+[ext_resource type="Script" uid="uid://bp3vyd0poau47" path="res://Demo_Code.gd" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://cb0l2dlvjucwx" path="res://rich_text_label.gd" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0e48y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 420.0
+offset_bottom = 40.0
+text = "Hello Test Display"
+script = ExtResource("1_wtcfe")
