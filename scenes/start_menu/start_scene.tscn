@@ -25,14 +25,16 @@ script = ExtResource("1_j82x3")
 [node name="EditorCamera" parent="." instance=ExtResource("2_flts6")]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -117.0
-offset_top = -198.0
-offset_right = 217.0
-offset_bottom = 40.0
+offset_left = -141.0
+offset_top = -223.0
+offset_right = 494.0
+offset_bottom = -32.0
 mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
 text = "Game title here might i suggest:
 Knight
 Might
-Fight"
+Fight?"
 
 [connection signal="pressed" from="StartButton" to="StartButton" method="_button_pressed"]
