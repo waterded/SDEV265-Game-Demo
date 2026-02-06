@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bju5mjdbarbbu"]
+
+[ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="1_nwqlm"]
+[ext_resource type="Script" uid="uid://ccnbocs5e6366" path="res://scenes/difficulty_select/back_button.gd" id="2_3njxl"]
+
+[node name="DifficultySelectScene" type="Node2D"]
+
+[node name="EditorCamera" parent="." instance=ExtResource("1_nwqlm")]
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = -22.0
+offset_top = 176.0
+offset_right = 23.0
+offset_bottom = 207.0
+text = "Back"
+script = ExtResource("2_3njxl")
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]

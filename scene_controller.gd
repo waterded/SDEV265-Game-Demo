@@ -1,11 +1,16 @@
 extends Node2D
  
-# Called when the node enters the scene tree for the first time.
+@onready var scene_container = $SceneContainer  # Where scenes get added
+
 func _ready() -> void:
-	pass # Replace with function body.
+    change_scene("res://scenes/start_menu/start_scene.tscn")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func change_scene(scene_path: String):
+    # Remove old scene
+    for child in scene_container.get_children():
+        child.queue_free()
+    
+    # Add new scene
+    print("loading ",scene_path)
+    var new_scene = load(scene_path).instantiate()
+    scene_container.add_child(new_scene)
