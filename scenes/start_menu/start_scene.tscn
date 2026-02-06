@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://jau4u6rn4x4c"]
+[gd_scene format=3 uid="uid://jau4u6rn4x4c"]
 
 [ext_resource type="Script" uid="uid://chixnr514tlrp" path="res://scenes/start_menu/start_button.gd" id="1_j82x3"]
 [ext_resource type="Texture2D" uid="uid://cy4t4c0j1ctvq" path="res://assets/Start Menu Demo Background.png" id="1_rhxc1"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_flts6"]
+[ext_resource type="Texture2D" uid="uid://dybsixn0rf5jn" path="res://assets/Speaker-0.png" id="4_ei7q2"]
+[ext_resource type="Texture2D" uid="uid://bs2d5i0pxs2yu" path="res://assets/Speaker-Crossed.png" id="5_ei7q2"]
+[ext_resource type="Script" uid="uid://be7llnpnhyyx3" path="res://scenes/start_menu/sound_button.gd" id="7_v6oho"]
 
-[node name="StartScene" type="Node2D"]
+[node name="StartScene" type="Node2D" unique_id=289524360]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1338928809]
 offset_left = -576.0
 offset_top = -324.0
 offset_right = 576.0
@@ -14,7 +17,7 @@ offset_bottom = 324.0
 mouse_filter = 2
 texture = ExtResource("1_rhxc1")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="." unique_id=1784310737]
 offset_left = -53.0
 offset_top = -19.0
 offset_right = 54.0
@@ -22,9 +25,9 @@ offset_bottom = 15.0
 text = "Start"
 script = ExtResource("1_j82x3")
 
-[node name="EditorCamera" parent="." instance=ExtResource("2_flts6")]
+[node name="EditorCamera" parent="." unique_id=1424458603 instance=ExtResource("2_flts6")]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="GameTitle" type="RichTextLabel" parent="." unique_id=1166326897]
 offset_left = -141.0
 offset_top = -223.0
 offset_right = 494.0
@@ -37,4 +40,16 @@ Knight
 Might
 Fight?"
 
+[node name="SoundButton" type="TextureButton" parent="." unique_id=1806372356]
+offset_left = -529.0
+offset_top = 196.0
+offset_right = -389.0
+offset_bottom = 336.0
+scale = Vector2(0.5, 0.5)
+toggle_mode = true
+texture_normal = ExtResource("4_ei7q2")
+texture_pressed = ExtResource("5_ei7q2")
+script = ExtResource("7_v6oho")
+
 [connection signal="pressed" from="StartButton" to="StartButton" method="_button_pressed"]
+[connection signal="toggled" from="SoundButton" to="SoundButton" method="_on_toggled"]

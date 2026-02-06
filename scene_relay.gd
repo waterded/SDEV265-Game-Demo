@@ -2,6 +2,15 @@
 
 extends Node
 
+# Load the button sound effect
+var button_sound = preload("res://assets/floraphonic-metal-blade-slice-80-200898.mp3")
+var audio_player: AudioStreamPlayer
+
+func _ready():
+	# Create an AudioStreamPlayer when SceneRelay initializes
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+
 #enums for scene change readability
 enum {
 	START_MENU,
@@ -19,6 +28,15 @@ var scene_path_dict = {
 	ITEM_SELECTION: "",
 	GAME_OVER: ""
 }
+
+#plays a UI sound effect that persists across scene changes
+func play_ui_sound(sound: AudioStream):
+	audio_player.stream = sound
+	audio_player.play()
+
+#plays the button click sound
+func play_button_sound():
+	play_ui_sound(button_sound)
 
 #calls the change to the main scene controller.
 func change_scene(scene: int):
