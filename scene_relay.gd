@@ -24,7 +24,7 @@ enum {
 var scene_path_dict = {
 	START_MENU: "res://scenes/start_menu/start_scene.tscn",
 	DIFFICULTY_SELECT: "res://scenes/difficulty_select/difficulty_select_scene.tscn",
-	COMBAT: "",
+	COMBAT: "res://scenes/combat_mode/combat_scene.tscn",
 	ITEM_SELECTION: "",
 	GAME_OVER: ""
 }
