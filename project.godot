@@ -23,6 +23,7 @@ config/icon="res://assets/icon.svg"
 
 SceneRelay="*res://scene_relay.gd"
 GameData="*uid://d0ul3ah1msi7h"
+Effect="*uid://ce6hxl3jlwoiv"
 
 [rendering]
 

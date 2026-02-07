@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://djr0bfyp8txlx"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_71v37"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_5tkhg"]
+[ext_resource type="Texture2D" uid="uid://ckcfu4d514t6u" path="res://assets/fc1450.png" id="2_rnhop"]
+
+[sub_resource type="Resource" id="Resource_ha6ph"]
+script = ExtResource("1_71v37")
+label = "Glancing Blow"
+weight = 5
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_s755e"]
+script = ExtResource("1_71v37")
+label = "Heavy Thrust"
+weight = 10
+color = Color(0.7013027, 0.6310021, 0.18514115, 1)
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_kfqhg"]
+script = ExtResource("1_71v37")
+label = "Quick Strike"
+weight = 5
+color = Color(0, 0.66749895, 1.347661e-06, 1)
+effects = Dictionary[int, int]({
+0: 3,
+7: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("2_5tkhg")
+display_name = "Rapier"
+icon = ExtResource("2_rnhop")
+effect_groups = Array[ExtResource("1_71v37")]([SubResource("Resource_ha6ph"), SubResource("Resource_s755e"), SubResource("Resource_kfqhg")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"
