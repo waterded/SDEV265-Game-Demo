@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjvl8kkn8le07"
-path="res://.godot/imported/Combat Mode Demo Background.png-29f18ed09ef3d8326ad89245785a5992.ctex"
+uid="uid://ckcfu4d514t6u"
+path="res://.godot/imported/fc1450.png-03afcf2a5e7c5e276f5a090de059dbd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Combat Mode Demo Background.png"
-dest_files=["res://.godot/imported/Combat Mode Demo Background.png-29f18ed09ef3d8326ad89245785a5992.ctex"]
+source_file="res://assets/Item Icons/fc1450.png"
+dest_files=["res://.godot/imported/fc1450.png-03afcf2a5e7c5e276f5a090de059dbd5.ctex"]
 
 [params]
 

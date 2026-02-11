@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy4t4c0j1ctvq"
-path="res://.godot/imported/Start Menu Demo Background.png-296ab3b59224a477de0d6f03215b9a21.ctex"
+uid="uid://c3r0e0brovhyd"
+path="res://.godot/imported/Speaker-1.png-d317cef30df483d17a42d7ec4d5fa76d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Start Menu Demo Background.png"
-dest_files=["res://.godot/imported/Start Menu Demo Background.png-296ab3b59224a477de0d6f03215b9a21.ctex"]
+source_file="res://assets/Audio/Speaker-1.png"
+dest_files=["res://.godot/imported/Speaker-1.png-d317cef30df483d17a42d7ec4d5fa76d.ctex"]
 
 [params]
 

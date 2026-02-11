@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://i47unydd7mit"]
 
-[ext_resource type="Texture2D" uid="uid://cjvl8kkn8le07" path="res://assets/Combat Mode Demo Background.png" id="1_3xal1"]
-[ext_resource type="Script" uid="uid://cmeg17kvhk4if" path="res://scenes/combat_mode/combat_scene.gd" id="1_m0bhs"]
-[ext_resource type="Resource" uid="uid://djr0bfyp8txlx" path="res://Combat System/Items/Player Items/rapier.tres" id="2_7gdny"]
+[ext_resource type="Texture2D" uid="uid://cjvl8kkn8le07" path="res://assets/Backgrounds/Combat Mode Demo Background.png" id="1_3xal1"]
+[ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_m0bhs"]
 
 [node name="CombatScene" type="Node2D" unique_id=206286677]
-script = ExtResource("1_m0bhs")
-item = ExtResource("2_7gdny")
 
 [node name="Background" type="TextureRect" parent="." unique_id=132441770]
 offset_left = -576.0
@@ -15,3 +12,5 @@ offset_right = 576.0
 offset_bottom = 324.0
 mouse_filter = 2
 texture = ExtResource("1_3xal1")
+
+[node name="EditorCamera" parent="." unique_id=2100617086 instance=ExtResource("2_m0bhs")]

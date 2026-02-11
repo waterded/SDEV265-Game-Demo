@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="1_nwqlm"]
 [ext_resource type="Script" uid="uid://ccnbocs5e6366" path="res://scenes/difficulty_select/back_button.gd" id="2_3njxl"]
-[ext_resource type="Texture2D" uid="uid://crm7eqis26s08" path="res://assets/Difficulty Select Demo.png" id="3_3njxl"]
+[ext_resource type="Texture2D" uid="uid://crm7eqis26s08" path="res://assets/Backgrounds/Difficulty Select Demo.png" id="3_3njxl"]
 [ext_resource type="Script" uid="uid://cpobcmuqk2u6k" path="res://scenes/difficulty_select/easy_button.gd" id="4_on1wh"]
 [ext_resource type="Script" uid="uid://dvpsh01cfhgaa" path="res://scenes/difficulty_select/medium_button.gd" id="5_l7f7b"]
 [ext_resource type="Script" uid="uid://bj418hjehjfvs" path="res://scenes/difficulty_select/hard_button.gd" id="6_hy8ew"]

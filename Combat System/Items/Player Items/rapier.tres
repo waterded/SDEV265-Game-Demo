@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_71v37"]
 [ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_5tkhg"]
-[ext_resource type="Texture2D" uid="uid://ckcfu4d514t6u" path="res://assets/fc1450.png" id="2_rnhop"]
+[ext_resource type="Texture2D" uid="uid://ckcfu4d514t6u" path="res://assets/Item Icons/fc1450.png" id="2_rnhop"]
 
 [sub_resource type="Resource" id="Resource_ha6ph"]
 script = ExtResource("1_71v37")
@@ -23,7 +23,7 @@ script = ExtResource("1_71v37")
 label = "Quick Strike"
 weight = 5
 color = Color(0, 0.66749895, 1.347661e-06, 1)
-effects = Dictionary[int, int]({
+effects = Dictionary[Variant, int]({
 0: 3,
 7: 1
 })

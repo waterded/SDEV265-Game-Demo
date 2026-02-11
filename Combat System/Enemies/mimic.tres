@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyTemplate" format=3 uid="uid://c5iawdkhgpxht"]
+
+[ext_resource type="Resource" uid="uid://bv3sprp5kfxsp" path="res://Combat System/Items/Enemy Items/trap.tres" id="1_eg7qa"]
+[ext_resource type="Script" uid="uid://doey7eqv7pt32" path="res://Combat System/enemy_template.gd" id="1_gebal"]
+[ext_resource type="Resource" uid="uid://djr0bfyp8txlx" path="res://Combat System/Items/Player Items/rapier.tres" id="2_8bbgm"]
+[ext_resource type="Texture2D" uid="uid://cfpovk0oag230" path="res://assets/Enemy Sprites/Mimic.png" id="4_uvca8"]
+
+[resource]
+script = ExtResource("1_gebal")
+enemy_name = "Mimic"
+sprite = ExtResource("4_uvca8")
+Combos = Array[Array]([[ExtResource("1_eg7qa"), ExtResource("2_8bbgm")], [ExtResource("1_eg7qa")]])
+metadata/_custom_type_script = "uid://doey7eqv7pt32"

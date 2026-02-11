@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://bv3sprp5kfxsp"]
 
 [ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_1g2ur"]
-[ext_resource type="Texture2D" uid="uid://clcp71j4c0yw4" path="res://assets/fc1193.png" id="2_0g8g4"]
+[ext_resource type="Texture2D" uid="uid://clcp71j4c0yw4" path="res://assets/Item Icons/fc1193.png" id="2_0g8g4"]
 [ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_48cch"]
 
 [sub_resource type="Resource" id="Resource_vq57n"]
@@ -9,7 +9,7 @@ script = ExtResource("1_1g2ur")
 label = "Early Snap"
 weight = 10
 color = Color(0.5176471, 0, 0, 1)
-effects = Dictionary[int, int]({
+effects = Dictionary[Variant, int]({
 0: 2,
 2: 5
 })
@@ -20,7 +20,7 @@ script = ExtResource("1_1g2ur")
 label = "Big Chomp"
 weight = 6
 color = Color(0.69411767, 0, 1, 1)
-effects = Dictionary[int, int]({
+effects = Dictionary[Variant, int]({
 0: 8
 })
 metadata/_custom_type_script = "uid://1vmcj1k2em07"
@@ -30,7 +30,7 @@ script = ExtResource("1_1g2ur")
 label = "Suprise attack"
 weight = 4
 color = Color(0.20392157, 0, 0.2901961, 1)
-effects = Dictionary[int, int]({
+effects = Dictionary[Variant, int]({
 0: 4,
 4: 1
 })

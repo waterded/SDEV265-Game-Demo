@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxe74ywcpis33"
+path="res://.godot/imported/Death of Kings.mp3-bf0e2034f1ec29cc83c301bd0ed994a2.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Death of Kings.mp3"
+dest_files=["res://.godot/imported/Death of Kings.mp3-bf0e2034f1ec29cc83c301bd0ed994a2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

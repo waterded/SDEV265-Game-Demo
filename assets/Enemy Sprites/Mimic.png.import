@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bttbarvfve81m"
-path="res://.godot/imported/Speaker-Crossed-flat.png-13ebb45bf1f38922187c1d6ca716e850.ctex"
+uid="uid://cfpovk0oag230"
+path="res://.godot/imported/Mimic.png-5ce20da11610ab6c1210f7fe545dc080.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Speaker-Crossed-flat.png"
-dest_files=["res://.godot/imported/Speaker-Crossed-flat.png-13ebb45bf1f38922187c1d6ca716e850.ctex"]
+source_file="res://assets/Enemy Sprites/Mimic.png"
+dest_files=["res://.godot/imported/Mimic.png-5ce20da11610ab6c1210f7fe545dc080.ctex"]
 
 [params]
 

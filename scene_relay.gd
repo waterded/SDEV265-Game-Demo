@@ -3,7 +3,7 @@
 extends Node
 
 # Load the button sound effect
-var button_sound = preload("res://assets/floraphonic-metal-blade-slice-80-200898.mp3")
+var button_sound = preload("res://assets/Audio/floraphonic-metal-blade-slice-80-200898.mp3")
 var audio_player: AudioStreamPlayer
 
 func _ready():
@@ -17,7 +17,8 @@ enum {
 	DIFFICULTY_SELECT,
 	COMBAT,
 	ITEM_SELECTION,
-	GAME_OVER
+	GAME_OVER,
+	RESOURCE_EDITOR
 }
 
 #stores the path for each scene enum
@@ -26,7 +27,8 @@ var scene_path_dict = {
 	DIFFICULTY_SELECT: "res://scenes/difficulty_select/difficulty_select_scene.tscn",
 	COMBAT: "res://scenes/combat_mode/combat_scene.tscn",
 	ITEM_SELECTION: "",
-	GAME_OVER: ""
+	GAME_OVER: "",
+	RESOURCE_EDITOR: "res://scenes/resource_editor/resource_editor.tscn"
 }
 
 #plays a UI sound effect that persists across scene changes

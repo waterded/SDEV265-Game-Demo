@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfpovk0oag230"
-path="res://.godot/imported/Mimic.png-897030fe15919a2174047be074b5c30d.ctex"
+uid="uid://cjvl8kkn8le07"
+path="res://.godot/imported/Combat Mode Demo Background.png-e947c742ffde1a75031b4de74a9af04c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Mimic.png"
-dest_files=["res://.godot/imported/Mimic.png-897030fe15919a2174047be074b5c30d.ctex"]
+source_file="res://assets/Backgrounds/Combat Mode Demo Background.png"
+dest_files=["res://.godot/imported/Combat Mode Demo Background.png-e947c742ffde1a75031b4de74a9af04c.ctex"]
 
 [params]
 
