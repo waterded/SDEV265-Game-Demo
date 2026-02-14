@@ -7,8 +7,8 @@ enum Type {
 	BLOCK,
 	POISON,
 	STUN,
-	SELF_LUCK, # shift weight toward better effects
-	TARGET_LUCK, # shift enemy weight toward worse effects
+	CURSE, # shift enemy weight toward worse effects
+	LUCK,
 	ROLL_AGAIN, # no probability cost
 	MULTIPLY_NEXT,
 	HEAL,
