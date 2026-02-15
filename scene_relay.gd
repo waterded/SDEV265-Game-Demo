@@ -27,7 +27,7 @@ var scene_path_dict = {
 	DIFFICULTY_SELECT: "res://scenes/difficulty_select/difficulty_select_scene.tscn",
 	COMBAT: "res://scenes/combat_mode/combat_scene.tscn",
 	ITEM_SELECTION: "",
-	GAME_OVER: "",
+	GAME_OVER: "res://scenes/game_over/game_over_scene.tscn",
 	RESOURCE_EDITOR: "res://scenes/resource_editor/resource_editor.tscn"
 }
 

@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cjvl8kkn8le07" path="res://assets/Backgrounds/Combat Mode Demo Background.png" id="1_3xal1"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_m0bhs"]
+[ext_resource type="Script" path="res://scenes/combat_mode/combat_scene.gd" id="3_combat"]
 
 [node name="CombatScene" type="Node2D" unique_id=206286677]
+script = ExtResource("3_combat")
 
 [node name="Background" type="TextureRect" parent="." unique_id=132441770]
 offset_left = -576.0

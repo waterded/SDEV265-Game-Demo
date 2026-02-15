@@ -17,6 +17,7 @@ var player_health : int:
 
 var enemies_fought : int
 var player_items
+var player_won : bool = false
 
 func reset() -> void:
 	difficulty = 100
@@ -24,3 +25,4 @@ func reset() -> void:
 	player_health = 50
 	enemies_fought = 0
 	player_items = []
+	player_won = false
