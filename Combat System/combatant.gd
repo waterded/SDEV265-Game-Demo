@@ -5,6 +5,19 @@ var max_hp: int
 var cur_hp: int
 var cur_effects: Dictionary[Effect.Type,int]
 
+func consume_effect(effect: Effect.Type, amount: int = -1) -> int:
+	if not cur_effects.has(effect):
+		return 0
+	var current: int = cur_effects[effect]
+	if amount < 0:
+		cur_effects.erase(effect)
+		return current
+	var subtracted: int = min(amount, current)
+	cur_effects[effect] -= subtracted
+	if cur_effects[effect] <= 0:
+		cur_effects.erase(effect)
+	return subtracted
+
 func add_effect(effect: Effect.Type, amount: int) -> void:
 	if cur_effects.has(effect):
 		# Effect already exists, stack the new amount on top
@@ -18,31 +31,26 @@ func heal(amount: int) -> void:
 	var healed: int = max(min(amount, max_hp-cur_hp),0)
 	cur_hp += healed
 
+func is_dead() -> bool:
+	if cur_hp <= 0:
+		#play death animation
+		return true
+	return false
+
 func apply_damage(amount: int) -> void:
-	# Negate: cancel incoming damage and decrement the negate counter
-	if cur_effects.has(Effect.Type.NEGATE) and amount > 0:
-		cur_effects[Effect.Type.NEGATE] -= 1
-		if cur_effects[Effect.Type.NEGATE] <= 0:
-			cur_effects.erase(Effect.Type.NEGATE)
+	if amount <= 0:
 		return
 
-	# Block: absorbs damage as a layer before HP
-	if cur_effects.has(Effect.Type.BLOCK) and amount > 0:
-		if amount >= cur_effects[Effect.Type.BLOCK]:
-			amount -= cur_effects[Effect.Type.BLOCK]
-			cur_effects.erase(Effect.Type.BLOCK)
-		else:
-			cur_effects[Effect.Type.BLOCK] -= amount
-			return
+	# Negate: cancel incoming damage and decrement the negate counter
+	if consume_effect(Effect.Type.NEGATE, 1) > 0:
+		return
 
-	# Armor: same as block, absorbs remaining damage before HP
-	if cur_effects.has(Effect.Type.ARMOR) and amount > 0:
-		if amount >= cur_effects[Effect.Type.ARMOR]:
-			amount -= cur_effects[Effect.Type.ARMOR]
-			cur_effects.erase(Effect.Type.ARMOR)
-		else:
-			cur_effects[Effect.Type.ARMOR] -= amount
-			return
-
+	# Block/Armor: absorb damage as layers before HP
+	amount -= consume_effect(Effect.Type.BLOCK, amount)
+	if amount <= 0:
+		return
+	amount -= consume_effect(Effect.Type.ARMOR, amount)
+	if amount <= 0:
+		return
 	# Apply remaining damage to HP
 	cur_hp -= amount

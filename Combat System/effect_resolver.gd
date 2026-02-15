@@ -5,8 +5,7 @@ func apply_effect(effect: Effect.Type, amount: int, attacker: Combatant, target:
 	if effect == Effect.Type.NOTHING:
 		return
 
-	amount = amount * attacker.cur_effects.get(Effect.Type.MULTIPLY_NEXT, 1)
-	attacker.cur_effects.erase(Effect.Type.MULTIPLY_NEXT)
+	amount *= max(attacker.consume_effect(Effect.Type.MULTIPLY_NEXT), 1)
 
 	match effect:
 		Effect.Type.DAMAGE:
