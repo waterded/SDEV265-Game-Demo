@@ -1,9 +1,15 @@
-[gd_scene format=3 uid="uid://i47unydd7mit"]
+[gd_scene format=3 uid="uid://c7yxkt50i4o32"]
 
 [ext_resource type="Texture2D" uid="uid://cjvl8kkn8le07" path="res://assets/Backgrounds/Combat Mode Demo Background.png" id="1_3xal1"]
+[ext_resource type="Script" uid="uid://cmeg17kvhk4if" path="res://scenes/combat_mode/combat_scene.gd" id="1_43w0q"]
+[ext_resource type="Resource" uid="uid://c5iawdkhgpxht" path="res://Combat System/Enemies/mimic.tres" id="2_gc4jl"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_m0bhs"]
+[ext_resource type="Script" uid="uid://blufhn1wnvyxi" path="res://Combat System/Combat Manager.gd" id="3_combat"]
+[ext_resource type="PackedScene" uid="uid://7e22gltvq1wt" path="res://scenes/combat_mode/combatant_ui.tscn" id="4_combatant_ui"]
 
 [node name="CombatScene" type="Node2D" unique_id=206286677]
+script = ExtResource("1_43w0q")
+enemy = ExtResource("2_gc4jl")
 
 [node name="Background" type="TextureRect" parent="." unique_id=132441770]
 offset_left = -576.0
@@ -14,3 +20,37 @@ mouse_filter = 2
 texture = ExtResource("1_3xal1")
 
 [node name="EditorCamera" parent="." unique_id=2100617086 instance=ExtResource("2_m0bhs")]
+
+[node name="CombatManager" type="Node" parent="." unique_id=436173996]
+script = ExtResource("3_combat")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1098003283]
+
+[node name="CombatLayout" type="HBoxContainer" parent="UILayer" unique_id=503840114]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="LeftMargin" type="Control" parent="UILayer/CombatLayout" unique_id=1906054594]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="PlayerUI" parent="UILayer/CombatLayout" unique_id=732449113 instance=ExtResource("4_combatant_ui")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterSpacer" type="Control" parent="UILayer/CombatLayout" unique_id=1269793079]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="EnemyUI" parent="UILayer/CombatLayout" unique_id=2113935999 instance=ExtResource("4_combatant_ui")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightMargin" type="Control" parent="UILayer/CombatLayout" unique_id=12394591]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2

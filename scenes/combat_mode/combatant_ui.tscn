@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://7e22gltvq1wt"]
+
+[ext_resource type="Script" uid="uid://cyi80qyd3m7co" path="res://scenes/combat_mode/combatant_ui.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://ck3ttvgrfx42w" path="res://scenes/combat_mode/components/combat_health_bar.gd" id="2_health"]
+[ext_resource type="Script" uid="uid://bcufik8hdo8td" path="res://scenes/combat_mode/components/probability_bar.gd" id="3_prob"]
+[ext_resource type="Script" uid="uid://b60uq0t3vuo2h" path="res://scenes/combat_mode/components/effect_display.gd" id="4_effect"]
+
+[node name="CombatantUI" type="VBoxContainer" unique_id=1486703750]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+script = ExtResource("1_script")
+
+[node name="Sprite" type="TextureRect" parent="." unique_id=2111056772]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 3
+stretch_mode = 5
+
+[node name="EffectDisplay" type="HBoxContainer" parent="." unique_id=592059590]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 4
+script = ExtResource("4_effect")
+
+[node name="HealthBar" type="Control" parent="." unique_id=1897194943]
+custom_minimum_size = Vector2(250, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("2_health")
+
+[node name="ItemSelectSlot" type="MarginContainer" parent="." unique_id=371870098]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Placeholder" type="Label" parent="ItemSelectSlot" unique_id=2132366345]
+layout_mode = 2
+text = "[ Item Select ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProbabilityBar" type="Control" parent="." unique_id=1553151499]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_prob")

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dybsixn0rf5jn" path="res://assets/Audio/Speaker-0.png" id="4_ei7q2"]
 [ext_resource type="Texture2D" uid="uid://bs2d5i0pxs2yu" path="res://assets/Audio/Speaker-Crossed.png" id="5_ei7q2"]
 [ext_resource type="Script" uid="uid://be7llnpnhyyx3" path="res://scenes/start_menu/sound_button.gd" id="7_v6oho"]
-[ext_resource type="Script" uid="uid://e1kaqoc8adq7" path="res://scenes/start_menu/resource_editor_button.gd" id="7_xss5h"]
+[ext_resource type="Script" path="res://scenes/start_menu/resource_editor_button.gd" id="7_xss5h"]
 
 [node name="StartScene" type="Node2D" unique_id=289524360]
 
@@ -53,10 +53,10 @@ texture_pressed = ExtResource("5_ei7q2")
 script = ExtResource("7_v6oho")
 
 [node name="ResourceEditorButton" type="Button" parent="." unique_id=1694136028]
-offset_left = 313.0
-offset_top = 225.0
-offset_right = 443.0
-offset_bottom = 256.0
+offset_left = 318.0
+offset_top = 212.0
+offset_right = 448.0
+offset_bottom = 243.0
 text = "Resource Editor"
 script = ExtResource("7_xss5h")
 

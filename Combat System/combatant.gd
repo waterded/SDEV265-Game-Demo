@@ -1,9 +1,20 @@
 class_name Combatant
 extends Node
 
+signal hp_changed(new_hp: int, max_hp: int)
+signal effect_changed(effect: Effect.Type, new_amount: int)
+signal damage_taken(amount: int)
+signal healed(amount: int)
+signal died()
+signal selected_item_changed(item: ItemTemplate)
+
 var max_hp: int
 var cur_hp: int
 var cur_effects: Dictionary[Effect.Type,int]
+var selected_item: ItemTemplate:
+	set(value):
+		selected_item = value
+		selected_item_changed.emit(value)
 
 func consume_effect(effect: Effect.Type, amount: int = -1) -> int:
 	if not cur_effects.has(effect):
@@ -11,29 +22,34 @@ func consume_effect(effect: Effect.Type, amount: int = -1) -> int:
 	var current: int = cur_effects[effect]
 	if amount < 0:
 		cur_effects.erase(effect)
+		effect_changed.emit(effect, 0)
 		return current
 	var subtracted: int = min(amount, current)
 	cur_effects[effect] -= subtracted
 	if cur_effects[effect] <= 0:
 		cur_effects.erase(effect)
+		effect_changed.emit(effect, 0)
+	else:
+		effect_changed.emit(effect, cur_effects[effect])
 	return subtracted
 
 func add_effect(effect: Effect.Type, amount: int) -> void:
 	if cur_effects.has(effect):
-		# Effect already exists, stack the new amount on top
 		cur_effects[effect] += amount
 	else:
-		# Effect not present, add it as a new entry
 		cur_effects[effect] = amount
+	effect_changed.emit(effect, cur_effects[effect])
 
 func heal(amount: int) -> void:
-	# Clamp heal to remaining capacity, and prevent negative heal if cur_hp > max_hp
-	var healed: int = max(min(amount, max_hp-cur_hp),0)
-	cur_hp += healed
+	var actual: int = max(min(amount, max_hp - cur_hp), 0)
+	cur_hp += actual
+	if actual > 0:
+		healed.emit(actual)
+		hp_changed.emit(cur_hp, max_hp)
 
 func is_dead() -> bool:
 	if cur_hp <= 0:
-		#play death animation
+		died.emit()
 		return true
 	return false
 
@@ -54,3 +70,5 @@ func apply_damage(amount: int) -> void:
 		return
 	# Apply remaining damage to HP
 	cur_hp -= amount
+	damage_taken.emit(amount)
+	hp_changed.emit(cur_hp, max_hp)

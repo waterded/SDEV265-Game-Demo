@@ -1,9 +1,35 @@
 class_name CombatManager
 extends Node
 
+signal roll_started(combatant: Combatant, item: ItemTemplate)
+signal roll_position_changed(value: float)
+signal roll_finished(combatant: Combatant, index: int)
+
 var player: Combatant
 var enemy: Combatant
 var effect_resolver: EffectResolver
+
+func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
+	effect_resolver = EffectResolver.new()
+
+	# Build player combatant from GameData
+	player = Combatant.new()
+	player.max_hp = GameData.player_max_health
+	player.cur_hp = GameData.player_health
+	add_child(player)
+
+	# Build enemy combatant from template
+	enemy = Combatant.new()
+	enemy.max_hp = enemy_template.base_hp
+	enemy.cur_hp = enemy_template.base_hp
+	add_child(enemy)
+
+	# Wire up UI panels
+	var player_texture: Texture2D = load("res://assets/icon.svg")
+	player_ui.setup(player, player_texture)
+	player_ui.connect_roll_signals(self)
+	enemy_ui.setup(enemy, enemy_template.sprite)
+	enemy_ui.connect_roll_signals(self)
 
 func _check_death() -> bool:
 	return player.is_dead() or enemy.is_dead()
@@ -18,7 +44,8 @@ func _run_roll_animation(target: float, duration: float) -> void:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
 		var x: float = minf(elapsed / duration, 1.0)
-		print(_roll_curve(x, target))
+		var value: float = _roll_curve(x, target)
+		roll_position_changed.emit(value)
 
 func _run_luck_animation(from: float, to: float, duration: float) -> void:
 	var elapsed: float = 0.0
@@ -26,7 +53,8 @@ func _run_luck_animation(from: float, to: float, duration: float) -> void:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
 		var x: float = minf(elapsed / duration, 1.0)
-		print(lerp(from, to, x))
+		var value: float = lerp(from, to, x)
+		roll_position_changed.emit(value)
 
 func _get_roll_index(item: ItemTemplate, attacker: Combatant, time: float) -> int:
 	# Sum weights
@@ -66,14 +94,16 @@ func _do_roll(item: ItemTemplate, attacker: Combatant, target: Combatant) -> voi
 	var roll_time: float = 5
 
 	while rolling:
+		roll_started.emit(attacker, item)
 		index = await _get_roll_index(item, attacker, roll_time)
+		roll_finished.emit(attacker, index)
 
 		#resolve effects
 		var result = item.effect_groups[index].effects
 
 		for effect in result:
 			effect_resolver.apply_effect(effect, result[effect], attacker, target)
-		
+
 		#check for death
 		if _check_death():
 			return
