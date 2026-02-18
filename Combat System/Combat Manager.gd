@@ -31,6 +31,8 @@ func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	enemy_ui.setup(enemy, enemy_template.sprite)
 	enemy_ui.connect_roll_signals(self)
 
+	enemy.selected_item = load("res://Combat System/Items/Enemy Items/trap.tres")
+
 func _check_death() -> bool:
 	return player.is_dead() or enemy.is_dead()
 
