@@ -6,6 +6,8 @@ func apply_effect(effect: Effect.Type, amount: int, attacker: Combatant, target:
 		return
 
 	amount *= max(attacker.consume_effect(Effect.Type.MULTIPLY_NEXT), 1)
+	if attacker.is_enemy:
+		amount = max((amount * GameData.difficulty)/100,1)
 
 	match effect:
 		Effect.Type.DAMAGE:

@@ -9,5 +9,5 @@
 script = ExtResource("1_gebal")
 enemy_name = "Mimic"
 sprite = ExtResource("4_uvca8")
-Combos = Array[Array]([[ExtResource("1_eg7qa"), ExtResource("2_8bbgm")], [ExtResource("1_eg7qa")]])
+combos = Array[Array]([[ExtResource("1_eg7qa"), ExtResource("1_eg7qa")], [ExtResource("2_8bbgm")]])
 metadata/_custom_type_script = "uid://doey7eqv7pt32"

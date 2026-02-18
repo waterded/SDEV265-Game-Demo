@@ -15,6 +15,7 @@ var selected_item: ItemTemplate:
 	set(value):
 		selected_item = value
 		selected_item_changed.emit(value)
+var is_enemy: bool
 
 func consume_effect(effect: Effect.Type, amount: int = -1) -> int:
 	if not cur_effects.has(effect):
@@ -72,3 +73,14 @@ func apply_damage(amount: int) -> void:
 	cur_hp -= amount
 	damage_taken.emit(amount)
 	hp_changed.emit(cur_hp, max_hp)
+
+func update_status() -> void:
+	# POISON,
+	if cur_effects.has(Effect.Type.POISON):
+		apply_damage(cur_effects[Effect.Type.POISON])
+		consume_effect(Effect.Type.POISON)
+	
+	# BLOCK,
+	if cur_effects.has(Effect.Type.BLOCK):
+		consume_effect(Effect.Type.BLOCK)
+	

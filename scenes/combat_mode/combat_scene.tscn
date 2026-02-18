@@ -54,3 +54,9 @@ size_flags_horizontal = 3
 [node name="RightMargin" type="Control" parent="UILayer/CombatLayout" unique_id=12394591]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+
+[node name="Button" type="Button" parent="UILayer" unique_id=1288049178]
+offset_left = 243.0
+offset_top = 379.0
+offset_right = 293.0
+offset_bottom = 429.0

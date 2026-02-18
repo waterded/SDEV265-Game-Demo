@@ -8,20 +8,24 @@ signal roll_finished(combatant: Combatant, index: int)
 var player: Combatant
 var enemy: Combatant
 var effect_resolver: EffectResolver
+var attack_que: AttackQue
 
 func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	effect_resolver = EffectResolver.new()
+	attack_que = AttackQue.new()
 
 	# Build player combatant from GameData
 	player = Combatant.new()
 	player.max_hp = GameData.player_max_health
 	player.cur_hp = GameData.player_health
+	player.is_enemy = false
 	add_child(player)
 
 	# Build enemy combatant from template
 	enemy = Combatant.new()
 	enemy.max_hp = enemy_template.base_hp
 	enemy.cur_hp = enemy_template.base_hp
+	enemy.is_enemy = true
 	add_child(enemy)
 
 	# Wire up UI panels
@@ -31,7 +35,35 @@ func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	enemy_ui.setup(enemy, enemy_template.sprite)
 	enemy_ui.connect_roll_signals(self)
 
-	enemy.selected_item = load("res://Combat System/Items/Enemy Items/trap.tres")
+	enemy.selected_item = attack_que.build_que(enemy_template.combos)
+	run_combat()
+
+func run_combat()-> void:
+	var in_combat: bool = true
+
+	while in_combat:
+		if player.cur_effects[Effect.Type.STUN]>0:
+			player.consume_effect(Effect.Type.STUN,1)
+		else:
+			#player choose item
+			#player press roll
+			await _do_roll(player.selected_item, player, enemy)
+			if _check_death():
+				return
+		
+		if enemy.cur_effects[Effect.Type.STUN]>0:
+			enemy.consume_effect(Effect.Type.STUN,1)
+		else:
+			await _do_roll(enemy.selected_item, enemy, player)
+			if _check_death():
+				return
+
+		player.update_status()
+		enemy.update_status()
+		if _check_death():
+				return
+
+		enemy.selected_item = attack_que.get_next()
 
 func _check_death() -> bool:
 	return player.is_dead() or enemy.is_dead()

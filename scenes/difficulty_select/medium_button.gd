@@ -3,5 +3,6 @@ extends Button
 func _on_pressed() -> void:
 	GameData.difficulty = 100
 	GameData.player_max_health = 50
+	GameData.player_health = 50
 	SceneRelay.play_button_sound()
 	SceneRelay.change_scene(SceneRelay.COMBAT)
