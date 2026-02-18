@@ -31,7 +31,7 @@ weight = 5
 color = Color(0, 0.66749895, 1.347661e-06, 1)
 effects = Dictionary[int, int]({
 0: 3,
-7: 1
+8: 1
 })
 metadata/_custom_type_script = "uid://1vmcj1k2em07"
 

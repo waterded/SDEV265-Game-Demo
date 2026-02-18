@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://bp3ivt71pj3ys"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_mt5wc"]
+[ext_resource type="Texture2D" uid="uid://bbsjcjn4s0i8y" path="res://assets/Item Icons/fc1557.png" id="2_fs5wc"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_i42ay"]
+
+[sub_resource type="Resource" id="Resource_7atxn"]
+script = ExtResource("1_mt5wc")
+label = "Debug Enemy"
+weight = 10
+color = Color(0.7411765, 0, 0, 1)
+effects = Dictionary[int, int]({
+0: 100
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("2_i42ay")
+icon = ExtResource("2_fs5wc")
+rarity = 5
+effect_groups = Array[ExtResource("1_mt5wc")]([SubResource("Resource_7atxn")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

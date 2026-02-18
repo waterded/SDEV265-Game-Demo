@@ -23,4 +23,4 @@ func reset() -> void:
 	player_max_health = 50
 	player_health = 50
 	enemies_fought = 0
-	player_items = []
+	player_items = [load("res://Combat System/Items/Player Items/rapier.tres"),load("res://Combat System/Items/Player Items/debug_hammer.tres")]

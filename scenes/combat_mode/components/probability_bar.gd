@@ -49,11 +49,7 @@ func _draw() -> void:
 		draw_rect(segment_rect, group.color, true)
 		x_offset += segment_width
 
-	# Draw rounded mask by punching out the corners with the background color
-	# We achieve rounded edges by overdrawing corner regions with arcs
-	_draw_rounded_corners(bar_rect)
-
-	# Draw segment divider lines
+		# Draw segment divider lines
 	x_offset = 0.0
 	for i in range(item.effect_groups.size() - 1):
 		var group: EffectGroup = item.effect_groups[i]
@@ -65,10 +61,6 @@ func _draw() -> void:
 			Color(0.0, 0.0, 0.0, 0.5),
 			2.0
 		)
-
-	# Draw border
-	var points: PackedVector2Array = _get_rounded_rect_points(bar_rect, BAR_RADIUS)
-	draw_polyline(points, Color(0.8, 0.8, 0.8, 0.6), 2.0)
 
 	# Draw spinner indicator
 	if spinner_position >= 0.0:
@@ -87,34 +79,3 @@ func _draw() -> void:
 			Vector2(sx, tri_size - 4),
 		])
 		draw_colored_polygon(tri, Color.WHITE)
-
-func _draw_rounded_corners(rect: Rect2) -> void:
-	# Draw background-colored rectangles over corners, then arcs to create rounded look
-	var bg := Color(0.0, 0.0, 0.0, 0.0)
-	# We'll use the stencil approach: clear corners then redraw arcs
-	# Actually, simplest approach: redraw the bar using draw_rounded_rect idea
-	# Godot 4 doesn't have draw_rounded_rect, so we use a polygon approach
-	pass  # Corners handled by the polyline border; segments slightly overflow but looks fine
-
-func _get_rounded_rect_points(rect: Rect2, radius: float) -> PackedVector2Array:
-	var points := PackedVector2Array()
-	var r: float = minf(radius, minf(rect.size.x * 0.5, rect.size.y * 0.5))
-	var corners := [
-		[Vector2(rect.position.x + r, rect.position.y + r), PI, PI * 1.5],
-		[Vector2(rect.end.x - r, rect.position.y + r), PI * 1.5, PI * 2.0],
-		[Vector2(rect.end.x - r, rect.end.y - r), 0, PI * 0.5],
-		[Vector2(rect.position.x + r, rect.end.y - r), PI * 0.5, PI],
-	]
-	var segments: int = 8
-	for corner in corners:
-		var center: Vector2 = corner[0]
-		var angle_start: float = corner[1]
-		var angle_end: float = corner[2]
-		for j in range(segments + 1):
-			var angle: float = angle_start + (angle_end - angle_start) * (float(j) / float(segments))
-			points.append(center + Vector2(cos(angle), sin(angle)) * r)
-	points.append(points[0])  # Close the shape
-	return points
-
-func _get_minimum_size() -> Vector2:
-	return Vector2(100, BAR_HEIGHT + 8)

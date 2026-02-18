@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_m0bhs"]
 [ext_resource type="Script" uid="uid://blufhn1wnvyxi" path="res://Combat System/Combat Manager.gd" id="3_combat"]
 [ext_resource type="PackedScene" uid="uid://7e22gltvq1wt" path="res://scenes/combat_mode/combatant_ui.tscn" id="4_combatant_ui"]
+[ext_resource type="PackedScene" path="res://scenes/combat_mode/components/player_item_select.tscn" id="5_item_select"]
+[ext_resource type="Script" uid="uid://dvni36nv5pkwp" path="res://scenes/combat_mode/components/roll_button.gd" id="6_roll_btn"]
+[ext_resource type="PackedScene" path="res://scenes/combat_mode/components/enemy_item_display.tscn" id="7_enemy_display"]
 
 [node name="CombatScene" type="Node2D" unique_id=206286677]
 script = ExtResource("1_43w0q")
@@ -38,25 +41,43 @@ theme_override_constants/separation = 40
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="PlayerUI" parent="UILayer/CombatLayout" unique_id=732449113 instance=ExtResource("4_combatant_ui")]
+[node name="PlayerSection" type="VBoxContainer" parent="UILayer/CombatLayout" unique_id=2046505845]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="PlayerUI" parent="UILayer/CombatLayout/PlayerSection" unique_id=732449113 instance=ExtResource("4_combatant_ui")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerItemSelect" parent="UILayer/CombatLayout/PlayerSection" unique_id=1855776105 instance=ExtResource("5_item_select")]
+layout_mode = 2
+
+[node name="RollButton" type="Button" parent="UILayer/CombatLayout/PlayerSection" unique_id=1799799201]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("6_roll_btn")
 
 [node name="CenterSpacer" type="Control" parent="UILayer/CombatLayout" unique_id=1269793079]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="EnemyUI" parent="UILayer/CombatLayout" unique_id=2113935999 instance=ExtResource("4_combatant_ui")]
+[node name="EnemySection" type="VBoxContainer" parent="UILayer/CombatLayout" unique_id=688457864]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="EnemyUI" parent="UILayer/CombatLayout/EnemySection" unique_id=2113935999 instance=ExtResource("4_combatant_ui")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyItemDisplay" parent="UILayer/CombatLayout/EnemySection" unique_id=1535465216 instance=ExtResource("7_enemy_display")]
+layout_mode = 2
 
 [node name="RightMargin" type="Control" parent="UILayer/CombatLayout" unique_id=12394591]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-
-[node name="Button" type="Button" parent="UILayer" unique_id=1288049178]
-offset_left = 243.0
-offset_top = 379.0
-offset_right = 293.0
-offset_bottom = 429.0

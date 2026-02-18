@@ -16,9 +16,10 @@ enum {
 	START_MENU,
 	DIFFICULTY_SELECT,
 	COMBAT,
-	ITEM_SELECTION,
+	NEXT,
 	GAME_OVER,
-	RESOURCE_EDITOR
+	PLAYER_WIN,
+	CREDITS
 }
 
 #stores the path for each scene enum
@@ -26,9 +27,10 @@ var scene_path_dict = {
 	START_MENU: "res://scenes/start_menu/start_scene.tscn",
 	DIFFICULTY_SELECT: "res://scenes/difficulty_select/difficulty_select_scene.tscn",
 	COMBAT: "res://scenes/combat_mode/combat_scene.tscn",
-	ITEM_SELECTION: "",
-	GAME_OVER: "",
-	RESOURCE_EDITOR: "res://scenes/resource_editor/resource_editor.tscn"
+	NEXT: "res://scenes/next_menu/next_menu.tscn",
+	GAME_OVER: "res://scenes/game_over/game_over.tscn",
+	PLAYER_WIN: "res://scenes/player_win/player_win.tscn",
+	CREDITS: "res://scenes/credits/credits.tscn"
 }
 
 #plays a UI sound effect that persists across scene changes

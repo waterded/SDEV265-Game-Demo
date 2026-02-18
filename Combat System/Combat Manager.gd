@@ -4,11 +4,14 @@ extends Node
 signal roll_started(combatant: Combatant, item: ItemTemplate)
 signal roll_position_changed(value: float)
 signal roll_finished(combatant: Combatant, index: int)
+signal player_turn_started
+signal player_turn_ended
 
 var player: Combatant
 var enemy: Combatant
 var effect_resolver: EffectResolver
 var attack_que: AttackQue
+var _player_has_rolled: bool = false
 
 func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	effect_resolver = EffectResolver.new()
@@ -37,21 +40,30 @@ func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 
 	enemy.selected_item = attack_que.build_que(enemy_template.combos)
 	run_combat()
+	GameData.enemies_fought+=1
+	if GameData.player_health<=0:
+		SceneRelay.change_scene(SceneRelay.GAME_OVER)
+	if GameData.enemies_fought<3:
+		SceneRelay.change_scene(SceneRelay.NEXT)
+	SceneRelay.change_scene(SceneRelay.PLAYER_WIN)
 
 func run_combat()-> void:
 	var in_combat: bool = true
 
 	while in_combat:
-		if player.cur_effects[Effect.Type.STUN]>0:
+		if player.cur_effects.has(Effect.Type.STUN):
 			player.consume_effect(Effect.Type.STUN,1)
 		else:
-			#player choose item
-			#player press roll
+			player_turn_started.emit()
+			_player_has_rolled = false
+			while not _player_has_rolled:
+				await get_tree().process_frame
+			player_turn_ended.emit()
 			await _do_roll(player.selected_item, player, enemy)
 			if _check_death():
 				return
 		
-		if enemy.cur_effects[Effect.Type.STUN]>0:
+		if enemy.cur_effects.has(Effect.Type.STUN):
 			enemy.consume_effect(Effect.Type.STUN,1)
 		else:
 			await _do_roll(enemy.selected_item, enemy, player)
@@ -64,6 +76,9 @@ func run_combat()-> void:
 				return
 
 		enemy.selected_item = attack_que.get_next()
+
+func confirm_roll() -> void:
+	_player_has_rolled = true
 
 func _check_death() -> bool:
 	return player.is_dead() or enemy.is_dead()
@@ -144,4 +159,3 @@ func _do_roll(item: ItemTemplate, attacker: Combatant, target: Combatant) -> voi
 
 		# Consume 1 ROLL_AGAIN charge; keep rolling only if one was available
 		rolling = attacker.consume_effect(Effect.Type.ROLL_AGAIN, 1) > 0
-		roll_time *= .8

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dva05wca4uxti"]
+
+[ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="1_d20x5"]
+[ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_ibxd4"]
+
+[node name="PlayerWin" type="Node2D" unique_id=1407560574]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=535927390]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_d20x5")
+
+[node name="EditorCamera" parent="." unique_id=1185436520 instance=ExtResource("2_ibxd4")]
