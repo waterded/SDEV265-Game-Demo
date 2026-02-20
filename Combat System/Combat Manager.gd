@@ -40,6 +40,7 @@ func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 
 	enemy.selected_item = attack_que.build_que(enemy_template.combos)
 	await run_combat()
+	GameData.player_health=player.cur_hp
 	GameData.enemies_fought+=1
 	if GameData.player_health<=0:
 		SceneRelay.change_scene(SceneRelay.GAME_OVER)
