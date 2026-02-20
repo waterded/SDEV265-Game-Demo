@@ -39,13 +39,14 @@ func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	enemy_ui.connect_roll_signals(self)
 
 	enemy.selected_item = attack_que.build_que(enemy_template.combos)
-	run_combat()
+	await run_combat()
 	GameData.enemies_fought+=1
 	if GameData.player_health<=0:
 		SceneRelay.change_scene(SceneRelay.GAME_OVER)
-	if GameData.enemies_fought<3:
+	elif GameData.enemies_fought<3:
 		SceneRelay.change_scene(SceneRelay.NEXT)
-	SceneRelay.change_scene(SceneRelay.PLAYER_WIN)
+	else:
+		SceneRelay.change_scene(SceneRelay.PLAYER_WIN)
 
 func run_combat()-> void:
 	var in_combat: bool = true

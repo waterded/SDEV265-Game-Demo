@@ -2,13 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="1_ycthi"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_dvkrt"]
+[ext_resource type="Script" uid="uid://b5hxkk1gcahf1" path="res://scenes/next_menu/next_button.gd" id="3_dvkrt"]
 
 [node name="NextMenu" type="Node2D" unique_id=1953609882]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=632218851]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.5, 0.5)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=43931751]
+offset_left = -770.0
+offset_top = -349.0
+offset_right = 3070.0
+offset_bottom = 1811.0
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_ycthi")
 
 [node name="EditorCamera" parent="." unique_id=2088552892 instance=ExtResource("2_dvkrt")]
+
+[node name="NextButton" type="Button" parent="." unique_id=3039897]
+offset_left = -85.0
+offset_top = -15.0
+offset_right = 71.0
+offset_bottom = 91.0
+text = "NEXT"
+script = ExtResource("3_dvkrt")
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="_on_pressed"]

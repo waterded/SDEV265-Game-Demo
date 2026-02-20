@@ -25,6 +25,12 @@ SceneRelay="*res://scene_relay.gd"
 GameData="*uid://d0ul3ah1msi7h"
 Effect="*uid://ce6hxl3jlwoiv"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
