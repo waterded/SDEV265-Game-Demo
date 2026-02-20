@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://bfl4o16u3e3ws"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_s277k"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_txopo"]
+[ext_resource type="Texture2D" uid="uid://b5shvojirayu6" path="res://assets/Item Icons/fc2114.png" id="2_yu0kh"]
+
+[sub_resource type="Resource" id="Resource_ih5ub"]
+script = ExtResource("1_s277k")
+label = "Shield Bash"
+weight = 5
+color = Color(0.6001097, 0.0030878764, 0.8913763, 1)
+effects = Dictionary[int, int]({
+0: 6,
+3: 6
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_mjt2h"]
+script = ExtResource("1_s277k")
+label = "Block"
+weight = 8
+color = Color(0, 0.40836442, 0.84682596, 1)
+effects = Dictionary[int, int]({
+3: 12
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_dljkk"]
+script = ExtResource("1_s277k")
+label = "Fortify"
+weight = 4
+color = Color(0, 0.48235294, 0.5568628, 1)
+effects = Dictionary[int, int]({
+1: 15,
+3: 6
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_3yo7v"]
+script = ExtResource("1_s277k")
+label = "Perfect Parry"
+weight = 3
+color = Color(2.2621452e-06, 0.58924437, 0.34748232, 1)
+effects = Dictionary[int, int]({
+2: 1,
+5: 1,
+9: 2
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("2_txopo")
+display_name = "Shield"
+icon = ExtResource("2_yu0kh")
+rarity = 1
+effect_groups = Array[ExtResource("1_s277k")]([SubResource("Resource_ih5ub"), SubResource("Resource_mjt2h"), SubResource("Resource_dljkk"), SubResource("Resource_3yo7v")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

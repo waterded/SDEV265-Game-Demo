@@ -7,10 +7,11 @@
 [sub_resource type="Resource" id="Resource_ha6ph"]
 script = ExtResource("1_71v37")
 label = "Glancing Blow"
-weight = 5
+weight = 4
 color = Color(1, 0, 0, 1)
 effects = Dictionary[int, int]({
-0: 3
+0: 6,
+6: 2
 })
 metadata/_custom_type_script = "uid://1vmcj1k2em07"
 
@@ -20,17 +21,17 @@ label = "Heavy Thrust"
 weight = 10
 color = Color(0.7013027, 0.6310021, 0.18514115, 1)
 effects = Dictionary[int, int]({
-0: 6
+0: 12
 })
 metadata/_custom_type_script = "uid://1vmcj1k2em07"
 
 [sub_resource type="Resource" id="Resource_kfqhg"]
 script = ExtResource("1_71v37")
 label = "Quick Strike"
-weight = 5
+weight = 6
 color = Color(0, 0.66749895, 1.347661e-06, 1)
 effects = Dictionary[int, int]({
-0: 3,
+0: 6,
 8: 1
 })
 metadata/_custom_type_script = "uid://1vmcj1k2em07"

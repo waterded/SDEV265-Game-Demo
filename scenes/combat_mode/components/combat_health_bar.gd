@@ -1,9 +1,10 @@
+@tool
 class_name CombatHealthBar
 extends Control
 
-var _max_hp: int = 1
-var _cur_hp: int = 1
-var _display_hp: float = 1.0  # For tween animation
+var _max_hp: int = 100
+var _cur_hp: int = 100
+var _display_hp: float = 100.0  # For tween animation
 var _tween: Tween
 
 const BAR_HEIGHT: float = 24.0
@@ -15,6 +16,8 @@ const LOW_HP_COLOR := Color(0.9, 0.3, 0.1)
 const BORDER_COLOR := Color(0.7, 0.7, 0.7, 0.6)
 
 func setup(combatant: Combatant) -> void:
+	if Engine.is_editor_hint():
+		return
 	_max_hp = combatant.max_hp
 	_cur_hp = combatant.cur_hp
 	_display_hp = float(_cur_hp)
@@ -22,6 +25,8 @@ func setup(combatant: Combatant) -> void:
 	queue_redraw()
 
 func _on_hp_changed(new_hp: int, max_hp: int) -> void:
+	if Engine.is_editor_hint():
+		return
 	_max_hp = max_hp
 	_cur_hp = new_hp
 	if _tween:

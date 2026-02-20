@@ -1,3 +1,4 @@
+@tool
 class_name EffectDisplay
 extends HBoxContainer
 
@@ -5,28 +6,32 @@ extends HBoxContainer
 var _effect_labels: Dictionary = {}
 
 const EFFECT_NAMES: Dictionary = {
-	Effect.Type.DAMAGE: "DMG",
-	Effect.Type.ARMOR: "ARM",
-	Effect.Type.NEGATE: "NEG",
-	Effect.Type.BLOCK: "BLK",
-	Effect.Type.POISON: "PSN",
-	Effect.Type.STUN: "STN",
-	Effect.Type.CURSE: "CRS",
-	Effect.Type.LUCK: "LCK",
-	Effect.Type.ROLL_AGAIN: "R.AG",
-	Effect.Type.MULTIPLY_NEXT: "MLTx",
+	Effect.Type.DAMAGE: "DAMAGE",
+	Effect.Type.ARMOR: "ARMOR",
+	Effect.Type.NEGATE: "NEGATE",
+	Effect.Type.BLOCK: "BLOCK",
+	Effect.Type.POISON: "POISON",
+	Effect.Type.STUN: "STUN",
+	Effect.Type.CURSE: "CURSE",
+	Effect.Type.LUCK: "LUCK",
+	Effect.Type.ROLL_AGAIN: "ROLL AGAIN",
+	Effect.Type.MULTIPLY_NEXT: "MULTIPLY",
 	Effect.Type.HEAL: "HEAL",
 	Effect.Type.NOTHING: "---",
 }
 
 func setup(combatant: Combatant) -> void:
+	if Engine.is_editor_hint():
+		return
 	combatant.effect_changed.connect(_on_effect_changed)
 	# Initialize from current effects
 	for effect in combatant.cur_effects:
 		_on_effect_changed(effect, combatant.cur_effects[effect])
 
 func _on_effect_changed(effect: Effect.Type, new_amount: int) -> void:
-	if new_amount <= 0:
+	if Engine.is_editor_hint():
+		return
+	if new_amount == 0:
 		# Remove the display for this effect
 		if _effect_labels.has(effect):
 			_effect_labels[effect].queue_free()

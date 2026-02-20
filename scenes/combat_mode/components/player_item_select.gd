@@ -40,14 +40,14 @@ func _build_slots() -> void:
 func _create_slot(index: int) -> Control:
 	var slot := Control.new()
 	slot.custom_minimum_size = SLOT_SIZE
+	slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	slot.mouse_filter = Control.MOUSE_FILTER_STOP if _enabled else Control.MOUSE_FILTER_IGNORE
 
 	# Background texture
 	var bg := TextureRect.new()
 	bg.name = "Background"
-	bg.texture = load("res://assets/icon.svg")
-	bg.custom_minimum_size = SLOT_SIZE
-	bg.size = SLOT_SIZE
+	bg.texture = load("res://assets/item_fram.png")
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	bg.self_modulate = UNSELECTED_MODULATE

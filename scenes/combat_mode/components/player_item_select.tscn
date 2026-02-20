@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dd2eb8i820vda"]
 
-[ext_resource type="Script" path="res://scenes/combat_mode/components/player_item_select.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bu68nlhg858uc" path="res://scenes/combat_mode/components/player_item_select.gd" id="1_script"]
 
-[node name="PlayerItemSelect" type="HBoxContainer"]
+[node name="PlayerItemSelect" type="HBoxContainer" unique_id=193759974]
 custom_minimum_size = Vector2(0, 64)
 size_flags_horizontal = 4
 theme_override_constants/separation = 12

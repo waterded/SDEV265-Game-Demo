@@ -1,3 +1,4 @@
+@tool
 class_name ProbabilityBar
 extends Control
 
@@ -13,10 +14,14 @@ const BAR_HEIGHT: float = 32.0
 const SPINNER_WIDTH: float = 4.0
 
 func set_spinner(pos: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	spinner_position = pos
 	queue_redraw()
 
 func hide_spinner() -> void:
+	if Engine.is_editor_hint():
+		return
 	spinner_position = -1.0
 	queue_redraw()
 

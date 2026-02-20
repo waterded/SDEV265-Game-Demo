@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://df8s7oh7wgq7r"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_85g36"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_ky3ts"]
+[ext_resource type="Texture2D" uid="uid://xiiss6cbc4wv" path="res://assets/Item Icons/fc1697.png" id="2_kytfs"]
+
+[sub_resource type="Resource" id="Resource_j75bl"]
+script = ExtResource("1_85g36")
+label = "Wall of protection"
+weight = 5
+color = Color(0.03137255, 0.4862745, 1, 1)
+effects = Dictionary[int, int]({
+1: 5,
+3: 10
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_rb7dt"]
+script = ExtResource("1_85g36")
+label = "Curse"
+weight = 5
+color = Color(0.7490196, 0.03137255, 1, 1)
+effects = Dictionary[int, int]({
+4: 3,
+6: 3
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_6xawv"]
+script = ExtResource("1_85g36")
+label = "Fireball"
+weight = 4
+color = Color(1, 0.6156863, 0.03137255, 1)
+effects = Dictionary[int, int]({
+0: 10
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_xqevl"]
+script = ExtResource("1_85g36")
+label = "Blessing"
+weight = 2
+color = Color(0.03529412, 1, 0.14901961, 1)
+effects = Dictionary[int, int]({
+7: 5,
+10: 5
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_mnore"]
+script = ExtResource("1_85g36")
+label = "Enhance"
+weight = 4
+color = Color(0.89411765, 1, 0.03137255, 1)
+effects = Dictionary[int, int]({
+9: 3
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("2_ky3ts")
+display_name = "Magic Wand"
+icon = ExtResource("2_kytfs")
+rarity = 3
+effect_groups = Array[ExtResource("1_85g36")]([SubResource("Resource_j75bl"), SubResource("Resource_rb7dt"), SubResource("Resource_6xawv"), SubResource("Resource_xqevl"), SubResource("Resource_mnore")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

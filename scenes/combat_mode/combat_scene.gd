@@ -3,11 +3,11 @@ extends Node2D
 @export var enemy: EnemyTemplate
 
 @onready var combat_manager: CombatManager = $CombatManager
-@onready var player_ui = $UILayer/CombatLayout/PlayerSection/PlayerUI
-@onready var enemy_ui = $UILayer/CombatLayout/EnemySection/EnemyUI
-@onready var player_item_select = $UILayer/CombatLayout/PlayerSection/PlayerItemSelect
-@onready var roll_button = $UILayer/CombatLayout/PlayerSection/RollButton
-@onready var enemy_item_display = $UILayer/CombatLayout/EnemySection/EnemyItemDisplay
+@onready var player_ui = $PlayerUI
+@onready var enemy_ui = $EnemyUI
+@onready var player_item_select = $PlayerItemSelect
+@onready var roll_button = $RollButton
+@onready var enemy_item_display = $EnemyItemDisplay
 
 var _player_turn_active: bool = false
 
