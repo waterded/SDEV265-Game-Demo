@@ -2,7 +2,7 @@ class_name CombatManager
 extends Node
 
 signal roll_started(combatant: Combatant, item: ItemTemplate)
-signal roll_position_changed(value: float)
+signal roll_position_changed(combatant: Combatant, value: float)
 signal roll_finished(combatant: Combatant, index: int)
 signal player_turn_started
 signal player_turn_ended
@@ -65,6 +65,8 @@ func run_combat()-> void:
 			if _check_death():
 				return
 		
+		await get_tree().create_timer(0.5).timeout
+
 		if enemy.cur_effects.has(Effect.Type.STUN):
 			enemy.consume_effect(Effect.Type.STUN,1)
 		else:
@@ -74,6 +76,9 @@ func run_combat()-> void:
 
 		player.update_status()
 		enemy.update_status()
+		
+		await get_tree().create_timer(0.5).timeout
+
 		if _check_death():
 				return
 
@@ -89,23 +94,23 @@ func _roll_curve(x: float, t: float) -> float:
 	var inner: float = (asin(2.0 * t - 1.0) + 9.0 * PI) * (1.0 - pow(1.0 - x, 3.5)) - 9.0 * PI
 	return 0.5 + 0.5 * sin(inner)
 
-func _run_roll_animation(target: float, duration: float) -> void:
+func _run_roll_animation(target: float, duration: float, who: Combatant) -> void:
 	var elapsed: float = 0.0
 	while elapsed < duration:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
 		var x: float = minf(elapsed / duration, 1.0)
 		var value: float = _roll_curve(x, target)
-		roll_position_changed.emit(value)
+		roll_position_changed.emit(who, value)
 
-func _run_luck_animation(from: float, to: float, duration: float) -> void:
+func _run_luck_animation(from: float, to: float, duration: float, who: Combatant) -> void:
 	var elapsed: float = 0.0
 	while elapsed < duration:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
 		var x: float = minf(elapsed / duration, 1.0)
 		var value: float = lerp(from, to, x)
-		roll_position_changed.emit(value)
+		roll_position_changed.emit(who, value)
 
 func _get_roll_index(item: ItemTemplate, attacker: Combatant, time: float) -> int:
 	# Sum weights
@@ -115,7 +120,7 @@ func _get_roll_index(item: ItemTemplate, attacker: Combatant, time: float) -> in
 
 	# Roll as float in weight-space
 	var roll: float = randf_range(0.0, float(total_weight))
-	await _run_roll_animation(roll / float(total_weight), time)
+	await _run_roll_animation(roll / float(total_weight), time, attacker)
 
 	# Apply LUCK (full value shifts roll, converges toward 0 by 1)
 	var pre_luck_pos: float = roll / float(total_weight)
@@ -123,10 +128,11 @@ func _get_roll_index(item: ItemTemplate, attacker: Combatant, time: float) -> in
 	roll = clamp(roll + float(luck), 0.0, float(total_weight))
 	if luck > 0:
 		attacker.consume_effect(Effect.Type.LUCK, 1)
-		await _run_luck_animation(pre_luck_pos, roll / float(total_weight), time * 0.1)
+		await _run_luck_animation(pre_luck_pos, roll / float(total_weight), time * 0.1, attacker)
 	elif luck < 0:
 		attacker.add_effect(Effect.Type.LUCK, 1)
-		await _run_luck_animation(pre_luck_pos, roll / float(total_weight), time * 0.1)
+		await _run_luck_animation(pre_luck_pos, roll / float(total_weight), time * 0.1, attacker)
+
 
 	# Find index via cumulative walk (defaults to last group on edge)
 	var index: int = item.effect_groups.size() - 1
@@ -147,13 +153,15 @@ func _do_roll(item: ItemTemplate, attacker: Combatant, target: Combatant) -> voi
 	while rolling:
 		roll_started.emit(attacker, item)
 		index = await _get_roll_index(item, attacker, roll_time)
-		roll_finished.emit(attacker, index)
 
 		#resolve effects
 		var result = item.effect_groups[index].effects
 
 		for effect in result:
 			effect_resolver.apply_effect(effect, result[effect], attacker, target)
+
+		await get_tree().create_timer(0.5).timeout
+		roll_finished.emit(attacker, index)
 
 		#check for death
 		if _check_death():

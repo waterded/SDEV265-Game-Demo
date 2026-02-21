@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://ck3ttvgrfx42w" path="res://scenes/combat_mode/components/combat_health_bar.gd" id="2_health"]
 [ext_resource type="Script" uid="uid://bcufik8hdo8td" path="res://scenes/combat_mode/components/probability_bar.gd" id="3_prob"]
 [ext_resource type="Script" uid="uid://b60uq0t3vuo2h" path="res://scenes/combat_mode/components/effect_display.gd" id="4_effect"]
-[ext_resource type="Script" uid="uid://bea7155qs0773" path="res://scenes/combat_mode/components/floating_text.gd" id="5_float"]
 
 [node name="CombatantUI" type="VBoxContainer" unique_id=1486703750]
 custom_minimum_size = Vector2(300, 0)
@@ -23,11 +22,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 expand_mode = 3
 stretch_mode = 5
-
-[node name="FloatingText" type="Control" parent="." unique_id=1769030494]
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("5_float")
 
 [node name="EffectDisplay" type="HBoxContainer" parent="." unique_id=592059590]
 custom_minimum_size = Vector2(0, 28)
