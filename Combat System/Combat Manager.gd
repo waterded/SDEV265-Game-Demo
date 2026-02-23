@@ -32,7 +32,7 @@ func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	add_child(enemy)
 
 	# Wire up UI panels
-	var player_texture: Texture2D = load("res://assets/icon.svg")
+	var player_texture: Texture2D = load("res://assets/Attack 1.png")
 	player_ui.setup(player, player_texture)
 	player_ui.connect_roll_signals(self)
 	enemy_ui.setup(enemy, enemy_template.sprite)

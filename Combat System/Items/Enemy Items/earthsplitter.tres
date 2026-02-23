@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://b0dhbhnyefj38"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_7n5p6"]
+[ext_resource type="Texture2D" uid="uid://j40i3feml0o2" path="res://assets/Item Icons/fc1224.png" id="2_e83bq"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="3_nyky1"]
+
+[sub_resource type="Resource" id="Resource_eu7au"]
+script = ExtResource("1_7n5p6")
+label = "Tectonic Whiff"
+weight = 4
+color = Color(0.23422277, 0.14913076, 0.23424497, 1)
+effects = Dictionary[int, int]({
+11: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_mepwr"]
+script = ExtResource("1_7n5p6")
+label = "Misaligned Fracture"
+weight = 10
+color = Color(0.44126138, 0.010465454, 0.32893172, 1)
+effects = Dictionary[int, int]({
+0: 6,
+6: 4
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_5p22m"]
+script = ExtResource("1_7n5p6")
+label = "Faultline Slam"
+weight = 4
+color = Color(0.9685872, 5.679429e-06, 7.70092e-07, 1)
+effects = Dictionary[int, int]({
+0: 8
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_3ix8g"]
+script = ExtResource("1_7n5p6")
+label = "Continental Crush"
+weight = 2
+color = Color(0.39748323, 0, 0, 1)
+effects = Dictionary[int, int]({
+0: 10,
+5: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("3_nyky1")
+display_name = "Earthsplitter"
+icon = ExtResource("2_e83bq")
+rarity = -1
+effect_groups = Array[ExtResource("1_7n5p6")]([SubResource("Resource_eu7au"), SubResource("Resource_mepwr"), SubResource("Resource_5p22m"), SubResource("Resource_3ix8g")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

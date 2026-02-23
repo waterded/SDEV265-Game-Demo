@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyTemplate" format=3 uid="uid://dr2bsf34x0yp0"]
+
+[ext_resource type="Resource" uid="uid://drgw0xl3m4lox" path="res://Combat System/Items/Enemy Items/aether_intake.tres" id="1_72udk"]
+[ext_resource type="Script" uid="uid://doey7eqv7pt32" path="res://Combat System/enemy_template.gd" id="1_ooukq"]
+[ext_resource type="Resource" uid="uid://b3t0on2jna32b" path="res://Combat System/Items/Enemy Items/aether_expulsion.tres" id="2_ey21p"]
+[ext_resource type="Resource" uid="uid://bbqvvgbvbsy38" path="res://Combat System/Items/Enemy Items/hollow_coil.tres" id="3_s0kya"]
+[ext_resource type="Resource" uid="uid://bl0f1fxj01u06" path="res://Combat System/Items/Enemy Items/residual_surge.tres" id="4_l1lt4"]
+[ext_resource type="Texture2D" uid="uid://bpcpt1cqc1eol" path="res://assets/Enemy Sprites/Blue Dragon.png" id="6_7yxod"]
+
+[resource]
+script = ExtResource("1_ooukq")
+enemy_name = "Aetherwyrm"
+sprite = ExtResource("6_7yxod")
+base_hp = 90
+combos = Array[Array]([[ExtResource("1_72udk"), ExtResource("2_ey21p")], [ExtResource("3_s0kya")], [ExtResource("4_l1lt4")]])
+metadata/_custom_type_script = "uid://doey7eqv7pt32"

@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://c7yxkt50i4o32"]
 
 [ext_resource type="Script" uid="uid://cmeg17kvhk4if" path="res://scenes/combat_mode/combat_scene.gd" id="1_43w0q"]
+[ext_resource type="Script" uid="uid://doey7eqv7pt32" path="res://Combat System/enemy_template.gd" id="2_1ebng"]
 [ext_resource type="Resource" uid="uid://c5iawdkhgpxht" path="res://Combat System/Enemies/mimic.tres" id="2_gc4jl"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_m0bhs"]
 [ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="3_ale40"]
 [ext_resource type="Script" uid="uid://blufhn1wnvyxi" path="res://Combat System/Combat Manager.gd" id="3_combat"]
 [ext_resource type="PackedScene" uid="uid://7e22gltvq1wt" path="res://scenes/combat_mode/combatant_ui.tscn" id="4_combatant_ui"]
+[ext_resource type="Resource" uid="uid://b1j33ylu611f1" path="res://Combat System/Enemies/earth_king.tres" id="4_oksme"]
+[ext_resource type="Resource" uid="uid://dr2bsf34x0yp0" path="res://Combat System/Enemies/Aetherwyrm.tres" id="5_bbfq5"]
 [ext_resource type="PackedScene" uid="uid://dd2eb8i820vda" path="res://scenes/combat_mode/components/player_item_select.tscn" id="5_item_select"]
 [ext_resource type="Script" uid="uid://dvni36nv5pkwp" path="res://scenes/combat_mode/components/roll_button.gd" id="6_roll_btn"]
 [ext_resource type="PackedScene" uid="uid://bjhdrp0puq57e" path="res://scenes/combat_mode/components/enemy_item_display.tscn" id="7_enemy_display"]
 
 [node name="CombatScene" type="Node2D" unique_id=206286677]
 script = ExtResource("1_43w0q")
-enemy = ExtResource("2_gc4jl")
+enemy = Array[ExtResource("2_1ebng")]([ExtResource("2_gc4jl"), ExtResource("4_oksme"), ExtResource("5_bbfq5")])
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=82362723]
 offset_left = -770.0
@@ -32,9 +35,9 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -500.0
-offset_top = -180.0
+offset_top = -300.0
 offset_right = -200.0
-offset_bottom = 120.0
+offset_bottom = 96.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -56,9 +59,9 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 200.0
-offset_top = -180.0
+offset_top = -300.0
 offset_right = 500.0
-offset_bottom = 120.0
+offset_bottom = 96.0
 grow_horizontal = 1
 grow_vertical = 1
 

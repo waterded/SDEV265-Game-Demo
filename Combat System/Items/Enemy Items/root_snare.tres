@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://dq4abrtvmq3v"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_pq7rs"]
+[ext_resource type="Texture2D" uid="uid://e15wip6opd7i" path="res://assets/Item Icons/fc1067.png" id="2_gyku0"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="3_ef5gh"]
+
+[sub_resource type="Resource" id="Resource_shlw3"]
+script = ExtResource("1_pq7rs")
+label = "Shallow Roots"
+weight = 3
+color = Color(0.22, 0.5, 0.1, 1)
+effects = Dictionary[int, int]({
+4: 2
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_entg2"]
+script = ExtResource("1_pq7rs")
+label = "Entangle"
+weight = 12
+color = Color(0.12, 0.32, 0.06, 1)
+effects = Dictionary[int, int]({
+4: 4,
+6: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_stgh1"]
+script = ExtResource("1_pq7rs")
+label = "Stranglehold"
+weight = 3
+color = Color(0.45, 0.02, 0.18, 1)
+effects = Dictionary[int, int]({
+0: 5,
+4: 3,
+5: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("3_ef5gh")
+display_name = "Root Snare"
+icon = ExtResource("2_gyku0")
+rarity = -1
+effect_groups = Array[ExtResource("1_pq7rs")]([SubResource("Resource_shlw3"), SubResource("Resource_entg2"), SubResource("Resource_stgh1")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

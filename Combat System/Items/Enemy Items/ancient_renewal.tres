@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://cjonutpmr1i2o"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_ij6kl"]
+[ext_resource type="Texture2D" uid="uid://bn5lwbes5ncss" path="res://assets/Item Icons/fc1115.png" id="2_nrd38"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="3_qr8st"]
+
+[sub_resource type="Resource" id="Resource_brbk3"]
+script = ExtResource("1_ij6kl")
+label = "Stubborn Bark"
+weight = 10
+color = Color(0.48, 0.3, 0.1, 1)
+effects = Dictionary[int, int]({
+1: 4,
+10: 6
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_gmnd1"]
+script = ExtResource("1_ij6kl")
+label = "Geological Mending"
+weight = 4
+color = Color(0.72, 0.58, 0.08, 1)
+effects = Dictionary[int, int]({
+1: 6,
+10: 8
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_ogrw2"]
+script = ExtResource("1_ij6kl")
+label = "Overgrowth"
+weight = 2
+color = Color(0.1, 0.6, 0.18, 1)
+effects = Dictionary[int, int]({
+2: 1,
+8: 1,
+10: 4
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("3_qr8st")
+display_name = "Ancient Renewal"
+icon = ExtResource("2_nrd38")
+rarity = -1
+effect_groups = Array[ExtResource("1_ij6kl")]([SubResource("Resource_brbk3"), SubResource("Resource_gmnd1"), SubResource("Resource_ogrw2")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

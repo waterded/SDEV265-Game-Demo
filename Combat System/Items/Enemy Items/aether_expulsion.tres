@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://b3t0on2jna32b"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_ae001"]
+[ext_resource type="Texture2D" uid="uid://bq5mxd6hlaw8i" path="res://assets/Item Icons/fc787.png" id="2_8t6cg"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="3_ae001"]
+
+[sub_resource type="Resource" id="Resource_ae001"]
+script = ExtResource("1_ae001")
+label = "Fizzle"
+weight = 4
+color = Color(0.4, 0.35, 0.1, 1)
+effects = Dictionary[int, int]({
+0: 2
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_ae002"]
+script = ExtResource("1_ae001")
+label = "Diffuse Blast"
+weight = 9
+color = Color(0.7, 0.35, 0.05, 1)
+effects = Dictionary[int, int]({
+0: 4,
+6: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_ae003"]
+script = ExtResource("1_ae001")
+label = "Concentrated Beam"
+weight = 6
+color = Color(0, 0.5, 0.9, 1)
+effects = Dictionary[int, int]({
+0: 7
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_wqkmm"]
+script = ExtResource("1_ae001")
+label = "Catastrophic Overload"
+color = Color(0.6, 0, 0.5, 1)
+effects = Dictionary[int, int]({
+0: 10,
+5: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("3_ae001")
+display_name = "Aether Expulsion"
+icon = ExtResource("2_8t6cg")
+rarity = -1
+effect_groups = Array[ExtResource("1_ae001")]([SubResource("Resource_ae001"), SubResource("Resource_ae002"), SubResource("Resource_ae003"), SubResource("Resource_wqkmm")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

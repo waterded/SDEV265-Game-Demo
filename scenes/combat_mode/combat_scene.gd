@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var enemy: EnemyTemplate
+@export var enemy: Array[EnemyTemplate]
 
 @onready var combat_manager: CombatManager = $CombatManager
 @onready var player_ui = $PlayerUI
@@ -24,7 +24,7 @@ func _ready() -> void:
 	combat_manager.player_turn_ended.connect(_on_player_turn_ended)
 
 	# Start combat
-	combat_manager.start_combat(enemy, player_ui, enemy_ui)
+	combat_manager.start_combat(enemy[GameData.enemies_fought], player_ui, enemy_ui)
 
 	# Wire enemy item display after start_combat so enemy combatant exists
 	combat_manager.enemy.selected_item_changed.connect(_on_enemy_item_changed)

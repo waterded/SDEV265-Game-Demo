@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://drgw0xl3m4lox"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_ai001"]
+[ext_resource type="Texture2D" uid="uid://bmprck4vqkrh2" path="res://assets/Item Icons/fc890.png" id="2_ai001"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="3_ai001"]
+
+[sub_resource type="Resource" id="Resource_ai001"]
+script = ExtResource("1_ai001")
+label = "Shallow Charge"
+weight = 10
+color = Color(0.4, 0.3, 0.6, 1)
+effects = Dictionary[int, int]({
+1: 2,
+9: 2
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_ai002"]
+script = ExtResource("1_ai001")
+label = "Unstable Intake"
+weight = 4
+color = Color(0.7, 0.3, 0.1, 1)
+effects = Dictionary[int, int]({
+0: 5,
+9: 2
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_ai003"]
+script = ExtResource("1_ai001")
+label = "Deep Charge"
+weight = 6
+color = Color(0.15, 0, 0.5, 1)
+effects = Dictionary[int, int]({
+9: 3
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("3_ai001")
+display_name = "Aether Intake"
+icon = ExtResource("2_ai001")
+rarity = -1
+effect_groups = Array[ExtResource("1_ai001")]([SubResource("Resource_ai001"), SubResource("Resource_ai002"), SubResource("Resource_ai003")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

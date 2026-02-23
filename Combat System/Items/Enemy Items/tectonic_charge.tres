@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://dlm4p3k4vdd1e"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_d01tk"]
+[ext_resource type="Texture2D" uid="uid://b3fcmrq41j4oj" path="res://assets/Item Icons/fc1113.png" id="2_v38b8"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="3_rq8uf"]
+
+[sub_resource type="Resource" id="Resource_jgxrj"]
+script = ExtResource("1_d01tk")
+label = "Dormant Pulse"
+weight = 10
+color = Color(0.05882353, 0.20784314, 0.101960786, 1)
+effects = Dictionary[int, int]({
+1: 10
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_0p8mu"]
+script = ExtResource("1_d01tk")
+label = "Shallow Tremor"
+weight = 6
+color = Color(0.057232194, 0.2911103, 1.4439226e-07, 1)
+effects = Dictionary[int, int]({
+1: 5,
+9: 2
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_xhnna"]
+script = ExtResource("1_d01tk")
+label = "Deep Resonance"
+weight = 4
+color = Color(0.1764706, 0.65882355, 0, 1)
+effects = Dictionary[int, int]({
+9: 3
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("3_rq8uf")
+display_name = "Tectonic Charge"
+icon = ExtResource("2_v38b8")
+rarity = -1
+effect_groups = Array[ExtResource("1_d01tk")]([SubResource("Resource_jgxrj"), SubResource("Resource_0p8mu"), SubResource("Resource_xhnna")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

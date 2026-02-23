@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bea7155qs0773" path="res://scenes/combat_mode/components/floating_text.gd" id="5_float"]
 
 [node name="CombatantUI" type="VBoxContainer" unique_id=1486703750]
+texture_filter = 1
 custom_minimum_size = Vector2(300, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +19,7 @@ alignment = 1
 script = ExtResource("1_script")
 
 [node name="Sprite" type="TextureRect" parent="." unique_id=2111056772]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
 expand_mode = 3

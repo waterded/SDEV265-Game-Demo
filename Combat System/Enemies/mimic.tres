@@ -1,13 +1,16 @@
 [gd_resource type="Resource" script_class="EnemyTemplate" format=3 uid="uid://c5iawdkhgpxht"]
 
-[ext_resource type="Resource" uid="uid://bv3sprp5kfxsp" path="res://Combat System/Items/Enemy Items/trap.tres" id="1_eg7qa"]
 [ext_resource type="Script" uid="uid://doey7eqv7pt32" path="res://Combat System/enemy_template.gd" id="1_gebal"]
-[ext_resource type="Resource" uid="uid://djr0bfyp8txlx" path="res://Combat System/Items/Player Items/rapier.tres" id="2_8bbgm"]
+[ext_resource type="Resource" uid="uid://c7qdhl0arpqon" path="res://Combat System/Items/Enemy Items/fools_glitter.tres" id="1_uvca8"]
+[ext_resource type="Resource" uid="uid://cwdt3v81t0ibc" path="res://Combat System/Items/Enemy Items/lockjaw_crush.tres" id="2_qsdon"]
+[ext_resource type="Resource" uid="uid://b3siwggn5h560" path="res://Combat System/Items/Enemy Items/mimics_ruse.tres" id="3_e44qx"]
+[ext_resource type="Resource" uid="uid://3wfm8fmum6cx" path="res://Combat System/Items/Enemy Items/tongue_lash.tres" id="4_ajfh5"]
 [ext_resource type="Texture2D" uid="uid://cfpovk0oag230" path="res://assets/Enemy Sprites/Mimic.png" id="4_uvca8"]
 
 [resource]
 script = ExtResource("1_gebal")
 enemy_name = "Mimic"
 sprite = ExtResource("4_uvca8")
-combos = Array[Array]([[ExtResource("1_eg7qa"), ExtResource("1_eg7qa")], [ExtResource("2_8bbgm")]])
+base_hp = 60
+combos = Array[Array]([[ExtResource("1_uvca8"), ExtResource("2_qsdon")], [ExtResource("3_e44qx")], [ExtResource("4_ajfh5")]])
 metadata/_custom_type_script = "uid://doey7eqv7pt32"

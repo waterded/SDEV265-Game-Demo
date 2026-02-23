@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyTemplate" format=3 uid="uid://b1j33ylu611f1"]
+
+[ext_resource type="Resource" uid="uid://dlm4p3k4vdd1e" path="res://Combat System/Items/Enemy Items/tectonic_charge.tres" id="1_qmspv"]
+[ext_resource type="Resource" uid="uid://b0dhbhnyefj38" path="res://Combat System/Items/Enemy Items/earthsplitter.tres" id="2_w842h"]
+[ext_resource type="Resource" uid="uid://dq4abrtvmq3v" path="res://Combat System/Items/Enemy Items/root_snare.tres" id="3_40lay"]
+[ext_resource type="Resource" uid="uid://cjonutpmr1i2o" path="res://Combat System/Items/Enemy Items/ancient_renewal.tres" id="4_deyfe"]
+[ext_resource type="Script" uid="uid://doey7eqv7pt32" path="res://Combat System/enemy_template.gd" id="5_noqmq"]
+[ext_resource type="Texture2D" uid="uid://cf8yyv41fnmc4" path="res://assets/Enemy Sprites/Earth King.png" id="6_qirtm"]
+
+[resource]
+script = ExtResource("5_noqmq")
+enemy_name = "The Earth King"
+sprite = ExtResource("6_qirtm")
+base_hp = 80
+combos = Array[Array]([[ExtResource("1_qmspv"), ExtResource("2_w842h")], [ExtResource("3_40lay")], [ExtResource("4_deyfe")]])
+metadata/_custom_type_script = "uid://doey7eqv7pt32"

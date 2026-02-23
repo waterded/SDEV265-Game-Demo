@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://b3siwggn5h560"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_mr001"]
+[ext_resource type="Texture2D" uid="uid://dgw085emgenj6" path="res://assets/Item Icons/fc6.png" id="2_1u5q1"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_mr001"]
+
+[sub_resource type="Resource" id="Resource_mr001"]
+script = ExtResource("1_mr001")
+label = "Cracked Facade"
+weight = 3
+color = Color(0.25, 0.15, 0.08, 1)
+effects = Dictionary[int, int]({
+1: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_mr002"]
+script = ExtResource("1_mr001")
+label = "Hasty Retreat"
+weight = 6
+color = Color(0.2, 0.35, 0.12, 1)
+effects = Dictionary[int, int]({
+1: 3,
+10: 3
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_mr003"]
+script = ExtResource("1_mr001")
+label = "Wooden Shell"
+weight = 7
+color = Color(0.45, 0.25, 0.08, 1)
+effects = Dictionary[int, int]({
+1: 5
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_mr004"]
+script = ExtResource("1_mr001")
+label = "Perfect Disguise"
+weight = 4
+color = Color(0, 0.55, 0.45, 1)
+effects = Dictionary[int, int]({
+2: 2,
+10: 6
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("2_mr001")
+display_name = "Mimic's Ruse"
+icon = ExtResource("2_1u5q1")
+rarity = -1
+effect_groups = Array[ExtResource("1_mr001")]([SubResource("Resource_mr001"), SubResource("Resource_mr002"), SubResource("Resource_mr003"), SubResource("Resource_mr004")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"

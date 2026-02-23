@@ -20,6 +20,8 @@ func setup(p_combatant: Combatant, p_sprite_texture: Texture2D) -> void:
 
 	# Sprite
 	sprite.texture = p_sprite_texture
+	if p_combatant.is_enemy:
+		sprite.flip_h = true
 
 	# Health bar
 	health_bar.setup(combatant)

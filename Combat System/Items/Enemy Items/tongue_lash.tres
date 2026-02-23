@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="ItemTemplate" format=3 uid="uid://3wfm8fmum6cx"]
+
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_tl001"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="2_tl001"]
+[ext_resource type="Texture2D" uid="uid://dxd5a4wx5kac4" path="res://assets/Item Icons/fc1052.png" id="2_yidcn"]
+
+[sub_resource type="Resource" id="Resource_tl001"]
+script = ExtResource("1_tl001")
+label = "Sloppy Miss"
+weight = 3
+color = Color(0.25, 0.05, 0.25, 1)
+effects = Dictionary[int, int]({
+4: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_tl002"]
+script = ExtResource("1_tl001")
+label = "Sticky Grab"
+weight = 6
+color = Color(0.45, 0.05, 0.35, 1)
+effects = Dictionary[int, int]({
+0: 3,
+6: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_tl003"]
+script = ExtResource("1_tl001")
+label = "Acidic Coil"
+weight = 4
+color = Color(0.25, 0.5, 0, 1)
+effects = Dictionary[int, int]({
+0: 4,
+4: 3
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_tl004"]
+script = ExtResource("1_tl001")
+label = "Quick Flick"
+weight = 7
+color = Color(0.65, 0, 0.65, 1)
+effects = Dictionary[int, int]({
+0: 5,
+8: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[resource]
+script = ExtResource("2_tl001")
+display_name = "Tongue Lash"
+icon = ExtResource("2_yidcn")
+rarity = -1
+effect_groups = Array[ExtResource("1_tl001")]([SubResource("Resource_tl001"), SubResource("Resource_tl002"), SubResource("Resource_tl003"), SubResource("Resource_tl004")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"
