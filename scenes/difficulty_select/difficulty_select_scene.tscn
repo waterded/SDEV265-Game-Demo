@@ -1,55 +1,83 @@
 [gd_scene format=3 uid="uid://bju5mjdbarbbu"]
 
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="1_nwqlm"]
+[ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="1_on1wh"]
 [ext_resource type="Script" uid="uid://ccnbocs5e6366" path="res://scenes/difficulty_select/back_button.gd" id="2_3njxl"]
-[ext_resource type="Texture2D" uid="uid://crm7eqis26s08" path="res://assets/Backgrounds/Difficulty Select Demo.png" id="3_3njxl"]
 [ext_resource type="Script" uid="uid://cpobcmuqk2u6k" path="res://scenes/difficulty_select/easy_button.gd" id="4_on1wh"]
 [ext_resource type="Script" uid="uid://dvpsh01cfhgaa" path="res://scenes/difficulty_select/medium_button.gd" id="5_l7f7b"]
 [ext_resource type="Script" uid="uid://bj418hjehjfvs" path="res://scenes/difficulty_select/hard_button.gd" id="6_hy8ew"]
 
 [node name="DifficultySelectScene" type="Node2D" unique_id=269036262]
 
-[node name="Background" type="TextureRect" parent="." unique_id=592067018]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
-mouse_filter = 2
-texture = ExtResource("3_3njxl")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1292543925]
+offset_left = -770.0
+offset_top = -371.0
+offset_right = 3070.0
+offset_bottom = 1789.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_on1wh")
 
 [node name="EditorCamera" parent="." unique_id=458569836 instance=ExtResource("1_nwqlm")]
 
 [node name="BackButton" type="Button" parent="." unique_id=412379236]
-offset_left = -50.0
-offset_top = 176.0
-offset_right = 50.0
-offset_bottom = 207.0
+offset_left = -45.0
+offset_top = 246.0
+offset_right = 55.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 32
 text = "Back"
 script = ExtResource("2_3njxl")
 
 [node name="EasyButton" type="Button" parent="." unique_id=63798588]
-offset_left = -50.0
-offset_top = -70.0
-offset_right = 50.0
-offset_bottom = -39.0
+offset_left = -45.0
+offset_right = 55.0
+offset_bottom = 53.0
+tooltip_text = "Player HP: 60
+Enemy Damage: x.75"
+theme_override_font_sizes/font_size = 32
 text = "Easy"
 script = ExtResource("4_on1wh")
 
 [node name="MediumButton" type="Button" parent="." unique_id=1706961436]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 16.0
+offset_left = -68.0
+offset_top = 67.0
+offset_right = 68.0
+offset_bottom = 120.0
+tooltip_text = "Player HP: 50
+Enemy Damage: x1"
+theme_override_font_sizes/font_size = 32
 text = "Medium"
 script = ExtResource("5_l7f7b")
 
 [node name="HardButton" type="Button" parent="." unique_id=203639779]
-offset_left = -50.0
-offset_top = 40.0
-offset_right = 50.0
-offset_bottom = 71.0
+offset_left = -45.0
+offset_top = 143.0
+offset_right = 55.0
+offset_bottom = 196.0
+tooltip_text = "Player HP: 40
+Enemy Damage: x1.25"
+theme_override_font_sizes/font_size = 32
 text = "Hard"
 script = ExtResource("6_hy8ew")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1681629242]
+offset_left = -150.0
+offset_top = -325.0
+offset_right = 150.0
+offset_bottom = -50.0
+
+[node name="GameTitle" type="RichTextLabel" parent="." unique_id=1197078009]
+offset_left = -150.0
+offset_top = -325.0
+offset_right = 150.0
+offset_bottom = -50.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 64
+text = "Select
+Your
+Difficulty"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
 [connection signal="pressed" from="EasyButton" to="EasyButton" method="_on_pressed"]

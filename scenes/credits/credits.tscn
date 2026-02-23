@@ -5,12 +5,12 @@
 
 [node name="Credits" type="Node2D" unique_id=722401804]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=121853139]
-offset_left = -970.0
-offset_top = -555.0
-offset_right = 2870.0
-offset_bottom = 1605.0
-scale = Vector2(0.5, 0.5)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=537773602]
+offset_left = -770.0
+offset_top = -371.0
+offset_right = 3070.0
+offset_bottom = 1789.0
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_8n0nl")
 
 [node name="EditorCamera" parent="." unique_id=1637988004 instance=ExtResource("2_c8xcy")]
