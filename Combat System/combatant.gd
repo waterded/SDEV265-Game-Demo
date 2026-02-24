@@ -78,7 +78,7 @@ func update_status() -> void:
 	# POISON,
 	if cur_effects.has(Effect.Type.POISON):
 		apply_damage(cur_effects[Effect.Type.POISON])
-		consume_effect(Effect.Type.POISON)
+		consume_effect(Effect.Type.POISON,1)
 	
 	# BLOCK,
 	if cur_effects.has(Effect.Type.BLOCK):

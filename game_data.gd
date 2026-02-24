@@ -2,6 +2,8 @@
 
 extends Node
 
+var enemy_order: Array[EnemyTemplate] = [load("res://Combat System/Enemies/mimic.tres"),load("res://Combat System/Enemies/earth_king.tres"),load("res://Combat System/Enemies/Aetherwyrm.tres")]
+
 var difficulty : int
 var player_max_health : int:
 	set(value):

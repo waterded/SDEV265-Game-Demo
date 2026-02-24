@@ -1,16 +1,68 @@
 [gd_resource type="Resource" script_class="EnemyTemplate" format=3 uid="uid://c5iawdkhgpxht"]
 
+[ext_resource type="Script" uid="uid://1vmcj1k2em07" path="res://Combat System/effect_group.gd" id="1_e44qx"]
 [ext_resource type="Script" uid="uid://doey7eqv7pt32" path="res://Combat System/enemy_template.gd" id="1_gebal"]
-[ext_resource type="Resource" uid="uid://c7qdhl0arpqon" path="res://Combat System/Items/Enemy Items/fools_glitter.tres" id="1_uvca8"]
+[ext_resource type="Texture2D" uid="uid://d4csiicuuaudd" path="res://assets/Item Icons/fc133.png" id="2_ajfh5"]
 [ext_resource type="Resource" uid="uid://cwdt3v81t0ibc" path="res://Combat System/Items/Enemy Items/lockjaw_crush.tres" id="2_qsdon"]
 [ext_resource type="Resource" uid="uid://b3siwggn5h560" path="res://Combat System/Items/Enemy Items/mimics_ruse.tres" id="3_e44qx"]
+[ext_resource type="Script" uid="uid://dhmt1wwmuyinx" path="res://Combat System/item_template.gd" id="3_eyx0h"]
 [ext_resource type="Resource" uid="uid://3wfm8fmum6cx" path="res://Combat System/Items/Enemy Items/tongue_lash.tres" id="4_ajfh5"]
 [ext_resource type="Texture2D" uid="uid://cfpovk0oag230" path="res://assets/Enemy Sprites/Mimic.png" id="4_uvca8"]
+
+[sub_resource type="Resource" id="Resource_fg001"]
+script = ExtResource("1_e44qx")
+label = "Empty Shine"
+weight = 3
+color = Color(0.35, 0.32, 0.2, 1)
+effects = Dictionary[int, int]({
+11: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_fg002"]
+script = ExtResource("1_e44qx")
+label = "Coin Toss"
+weight = 6
+color = Color(0.6, 0.45, 0.1, 1)
+effects = Dictionary[int, int]({
+0: 2,
+8: 1
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_fg003"]
+script = ExtResource("1_e44qx")
+label = "Glinting Distraction"
+weight = 7
+color = Color(0.5, 0.3, 0.6, 1)
+effects = Dictionary[int, int]({
+6: 4
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_fg004"]
+script = ExtResource("1_e44qx")
+label = "Dazzling Hoard"
+weight = 4
+color = Color(0.85, 0.65, 0, 1)
+effects = Dictionary[int, int]({
+6: 2,
+9: 2
+})
+metadata/_custom_type_script = "uid://1vmcj1k2em07"
+
+[sub_resource type="Resource" id="Resource_sgo6w"]
+script = ExtResource("3_eyx0h")
+display_name = "Fool's Glitter"
+icon = ExtResource("2_ajfh5")
+rarity = -1
+effect_groups = Array[ExtResource("1_e44qx")]([SubResource("Resource_fg001"), SubResource("Resource_fg002"), SubResource("Resource_fg003"), SubResource("Resource_fg004")])
+metadata/_custom_type_script = "uid://dhmt1wwmuyinx"
 
 [resource]
 script = ExtResource("1_gebal")
 enemy_name = "Mimic"
 sprite = ExtResource("4_uvca8")
 base_hp = 60
-combos = Array[Array]([[ExtResource("1_uvca8"), ExtResource("2_qsdon")], [ExtResource("3_e44qx")], [ExtResource("4_ajfh5")]])
+combos = Array[Array]([[SubResource("Resource_sgo6w"), ExtResource("2_qsdon")], [ExtResource("3_e44qx")], [ExtResource("4_ajfh5")]])
 metadata/_custom_type_script = "uid://doey7eqv7pt32"
