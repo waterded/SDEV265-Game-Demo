@@ -13,5 +13,7 @@ func _ready() -> void:
 func update_item(item: ItemTemplate) -> void:
 	if item and item.icon:
 		_icon.texture = item.icon
+		tooltip_text = item.display_name
 	else:
 		_icon.texture = null
+		tooltip_text = ""

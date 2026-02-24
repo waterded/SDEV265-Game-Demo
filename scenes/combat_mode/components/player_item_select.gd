@@ -72,6 +72,7 @@ func _populate_slot(slot: Control, item: ItemTemplate) -> void:
 	var icon: TextureRect = slot.get_node("Icon")
 	if item.icon:
 		icon.texture = item.icon
+	slot.tooltip_text = item.display_name
 
 func _on_slot_input(event: InputEvent, index: int) -> void:
 	if not _enabled:
