@@ -6,11 +6,11 @@
 
 [node name="NextMenu" type="Node2D" unique_id=1953609882]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=43931751]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1500704059]
 offset_left = -770.0
-offset_top = -349.0
+offset_top = -371.0
 offset_right = 3070.0
-offset_bottom = 1811.0
+offset_bottom = 1789.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_ycthi")
 

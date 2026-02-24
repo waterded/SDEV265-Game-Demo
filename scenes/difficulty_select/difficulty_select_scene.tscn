@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://bju5mjdbarbbu"]
 
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="1_nwqlm"]
+[ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="1_on1wh"]
 [ext_resource type="Script" uid="uid://ccnbocs5e6366" path="res://scenes/difficulty_select/back_button.gd" id="2_3njxl"]
-[ext_resource type="Texture2D" uid="uid://crm7eqis26s08" path="res://assets/Backgrounds/Difficulty Select Demo.png" id="3_3njxl"]
 [ext_resource type="Script" uid="uid://cpobcmuqk2u6k" path="res://scenes/difficulty_select/easy_button.gd" id="4_on1wh"]
 [ext_resource type="Script" uid="uid://dvpsh01cfhgaa" path="res://scenes/difficulty_select/medium_button.gd" id="5_l7f7b"]
 [ext_resource type="Script" uid="uid://bj418hjehjfvs" path="res://scenes/difficulty_select/hard_button.gd" id="6_hy8ew"]
 
 [node name="DifficultySelectScene" type="Node2D" unique_id=269036262]
 
-[node name="Background" type="TextureRect" parent="." unique_id=592067018]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
-mouse_filter = 2
-texture = ExtResource("3_3njxl")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=790984693]
+offset_left = -770.0
+offset_top = -371.0
+offset_right = 3070.0
+offset_bottom = 1789.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_on1wh")
 
 [node name="EditorCamera" parent="." unique_id=458569836 instance=ExtResource("1_nwqlm")]
 

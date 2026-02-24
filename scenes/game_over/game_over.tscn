@@ -5,11 +5,11 @@
 
 [node name="GameOver" type="Node2D" unique_id=561130453]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1510076852]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2007847497]
 offset_left = -770.0
-offset_top = -349.0
+offset_top = -371.0
 offset_right = 3070.0
-offset_bottom = 1811.0
+offset_bottom = 1789.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_sseyc")
 
