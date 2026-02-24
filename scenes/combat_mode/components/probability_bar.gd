@@ -84,3 +84,49 @@ func _draw() -> void:
 			Vector2(sx, tri_size - 4),
 		])
 		draw_colored_polygon(tri, Color.WHITE)
+
+func _get_tooltip(at_position: Vector2) -> String:
+	if item == null or item.effect_groups.is_empty():
+		return ""
+
+	var total_weight: int = 0
+	for group in item.effect_groups:
+		total_weight += group.weight
+
+	if total_weight <= 0:
+		return ""
+
+	var x_offset: float = 0.0
+	for group: EffectGroup in item.effect_groups:
+		var segment_width: float = (float(group.weight) / float(total_weight)) * size.x
+		if at_position.x < x_offset + segment_width:
+			return _build_group_tooltip(group, total_weight)
+		x_offset += segment_width
+
+	return ""
+
+func _build_group_tooltip(group: EffectGroup, total_weight: int) -> String:
+	var pct: int = int(round(float(group.weight) / float(total_weight) * 100.0))
+	var lines: PackedStringArray = ["%s  (%d/%d — %d%%)" % [group.label, group.weight, total_weight, pct]]
+	for effect_type: int in group.effects:
+		var amount: int = group.effects[effect_type]
+		if item.rarity == -1 and effect_type == Effect.Type.DAMAGE:
+			amount = max((amount * GameData.difficulty) / 100, 1)
+		lines.append("  • " + _describe_effect(effect_type, amount))
+	return "\n".join(lines)
+
+func _describe_effect(effect_type: int, amount: int) -> String:
+	match effect_type:
+		Effect.Type.DAMAGE:        return "Deal %d damage to target" % amount
+		Effect.Type.ARMOR:         return "Gain %d armor" % amount
+		Effect.Type.NEGATE:        return "Negate %d incoming hit(s)" % amount
+		Effect.Type.BLOCK:         return "Block %d damage" % amount
+		Effect.Type.POISON:        return "Poison target for %d stack(s)" % amount
+		Effect.Type.STUN:          return "Stun target for %d turn(s)" % amount
+		Effect.Type.CURSE:         return "Curse target (-%d luck)" % amount
+		Effect.Type.LUCK:          return "Gain %d luck" % amount
+		Effect.Type.ROLL_AGAIN:    return "Roll again %d time(s)" % amount
+		Effect.Type.MULTIPLY_NEXT: return "Multiply next effect by %d" % amount
+		Effect.Type.HEAL:          return "Heal %d HP" % amount
+		Effect.Type.NOTHING:       return "Nothing happens"
+		_:                         return "Unknown effect"
