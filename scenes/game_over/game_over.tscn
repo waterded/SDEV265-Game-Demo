@@ -5,7 +5,7 @@
 
 [node name="GameOver" type="Node2D" unique_id=561130453]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2007847497]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1193540041]
 offset_left = -770.0
 offset_top = -371.0
 offset_right = 3070.0
