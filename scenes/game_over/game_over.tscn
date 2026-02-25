@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="1_sseyc"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_anb0t"]
+[ext_resource type="Script" uid="uid://boevo7mi84xum" path="res://scenes/player_win/credits_button.gd" id="3_anb0t"]
 
 [node name="GameOver" type="Node2D" unique_id=561130453]
 
@@ -14,3 +15,34 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_sseyc")
 
 [node name="EditorCamera" parent="." unique_id=2039686889 instance=ExtResource("2_anb0t")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1719565959]
+offset_left = -225.0
+offset_top = -325.0
+offset_right = 225.0
+offset_bottom = -50.0
+
+[node name="GameTitle" type="RichTextLabel" parent="." unique_id=1455231465]
+offset_left = -225.0
+offset_top = -325.0
+offset_right = 225.0
+offset_bottom = -50.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 64
+text = "Player
+Defeated
+Game Over
+"
+horizontal_alignment = 1
+
+[node name="CreditsButton" type="Button" parent="." unique_id=195133291]
+offset_left = -60.0
+offset_top = 100.0
+offset_right = 60.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+script = ExtResource("3_anb0t")
+
+[connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_on_pressed"]

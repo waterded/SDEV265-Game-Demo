@@ -15,3 +15,43 @@ texture = ExtResource("1_8n0nl")
 
 [node name="EditorCamera" parent="." unique_id=1637988004 instance=ExtResource("2_c8xcy")]
 position = Vector2(-1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1395255538]
+offset_left = -590.0
+offset_top = -310.0
+offset_right = 590.0
+offset_bottom = 310.0
+
+[node name="GameTitle" type="RichTextLabel" parent="." unique_id=82342850]
+offset_left = -590.0
+offset_top = -310.0
+offset_right = 590.0
+offset_bottom = 310.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "Credits:
+\"Death of Kings\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+Raven Fantasy Icons
+https://clockworkraven.itch.io/raven-fantasy-icons
+Free Fantasy Knight
+https://free-game-assets.itch.io/free-fantasy-knight
+Tyler Warren RPG Battlers
+https://tylerjwarren.itch.io/free-tyler-warren-rpg-battlers-favorites-30
+Metal Blade Slice 80 - floraphonic
+https://pixabay.com/sound-effects/film-special-effects-metal-blade-slice-80-200898/
+Free RPG Battleground Asset Pack
+https://craftpix.net/freebies/free-rpg-battleground-asset-pack/
+Our Team:
+Barb, Brooke, Gage, Hunter, Jayden, Sam, Tyler"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=25579981]
+offset_left = -50.0
+offset_top = 253.0
+offset_right = 50.0
+offset_bottom = 285.0
+text = "Main Menu
+"

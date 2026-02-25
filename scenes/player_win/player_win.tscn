@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="1_d20x5"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_ibxd4"]
+[ext_resource type="Script" uid="uid://boevo7mi84xum" path="res://scenes/player_win/credits_button.gd" id="3_ibxd4"]
 
 [node name="PlayerWin" type="Node2D" unique_id=1407560574]
 
@@ -14,3 +15,34 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_d20x5")
 
 [node name="EditorCamera" parent="." unique_id=1185436520 instance=ExtResource("2_ibxd4")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=134479469]
+offset_left = -225.0
+offset_top = -325.0
+offset_right = 225.0
+offset_bottom = -50.0
+
+[node name="GameTitle" type="RichTextLabel" parent="." unique_id=241124397]
+offset_left = -225.0
+offset_top = -325.0
+offset_right = 225.0
+offset_bottom = -50.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 64
+text = "Final Boss
+Defeated
+Player Wins!
+"
+horizontal_alignment = 1
+
+[node name="CreditsButton" type="Button" parent="." unique_id=46767443]
+offset_left = -60.0
+offset_top = 100.0
+offset_right = 60.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+script = ExtResource("3_ibxd4")
+
+[connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_on_pressed"]
