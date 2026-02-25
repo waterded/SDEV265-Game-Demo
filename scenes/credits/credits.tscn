@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xdg3n6jedb17" path="res://assets/Backgrounds/castle bridge (1).png" id="1_8n0nl"]
 [ext_resource type="PackedScene" uid="uid://cql6yyh4o87ys" path="res://utilities/editor_camera.tscn" id="2_c8xcy"]
+[ext_resource type="Script" uid="uid://dnca50o2uofic" path="res://scenes/credits/main_menu_button.gd" id="3_c8xcy"]
 
 [node name="Credits" type="Node2D" unique_id=722401804]
 
@@ -48,10 +49,13 @@ Our Team:
 Barb, Brooke, Gage, Hunter, Jayden, Sam, Tyler"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=25579981]
+[node name="MainMenuButton" type="Button" parent="." unique_id=25579981]
 offset_left = -50.0
 offset_top = 253.0
 offset_right = 50.0
 offset_bottom = 285.0
 text = "Main Menu
 "
+script = ExtResource("3_c8xcy")
+
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]
