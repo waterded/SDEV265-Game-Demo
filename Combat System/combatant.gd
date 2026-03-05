@@ -1,3 +1,4 @@
+# Represents a player or enemy with HP, effects, and combat actions
 class_name Combatant
 extends Node
 
@@ -17,6 +18,7 @@ var selected_item: ItemTemplate:
 		selected_item_changed.emit(value)
 var is_enemy: bool
 
+# Remove stacks of an effect, returns the amount actually consumed
 func consume_effect(effect: Effect.Type, amount: int = -1) -> int:
 	if not cur_effects.has(effect):
 		return 0
@@ -34,6 +36,7 @@ func consume_effect(effect: Effect.Type, amount: int = -1) -> int:
 		effect_changed.emit(effect, cur_effects[effect])
 	return subtracted
 
+# Add stacks of an effect to this combatant
 func add_effect(effect: Effect.Type, amount: int) -> void:
 	if cur_effects.has(effect):
 		cur_effects[effect] += amount
@@ -41,6 +44,7 @@ func add_effect(effect: Effect.Type, amount: int) -> void:
 		cur_effects[effect] = amount
 	effect_changed.emit(effect, cur_effects[effect])
 
+# Heal HP up to max
 func heal(amount: int) -> void:
 	var actual: int = max(min(amount, max_hp - cur_hp), 0)
 	cur_hp += actual
@@ -48,12 +52,14 @@ func heal(amount: int) -> void:
 		healed.emit(actual)
 		hp_changed.emit(cur_hp, max_hp)
 
+# Check if HP is zero or below and emit died signal
 func is_dead() -> bool:
 	if cur_hp <= 0:
 		died.emit()
 		return true
 	return false
 
+# Apply damage after checking negate, block, and armor
 func apply_damage(amount: int) -> void:
 	if amount <= 0:
 		return
@@ -74,6 +80,7 @@ func apply_damage(amount: int) -> void:
 	damage_taken.emit(amount)
 	hp_changed.emit(cur_hp, max_hp)
 
+# Process end-of-turn effects like poison and block decay
 func update_status() -> void:
 	# POISON,
 	if cur_effects.has(Effect.Type.POISON):

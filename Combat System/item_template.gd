@@ -1,3 +1,4 @@
+# Data template for a combat item with weighted effect groups
 class_name ItemTemplate
 extends Resource
 @export var display_name: String = "Default Item"

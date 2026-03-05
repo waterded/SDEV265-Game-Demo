@@ -1,8 +1,6 @@
+# Spawns animated floating text for damage, healing, and effect changes
 class_name FloatingText
 extends Control
-
-## Spawns animated floating text labels on the combatant UI.
-## Call setup() to connect to a combatant's signals.
 
 const EFFECT_NAMES: Dictionary = {
 	Effect.Type.DAMAGE: "DAMAGE",
@@ -26,6 +24,7 @@ var _sprite_node: TextureRect
 var _stack_count: int = 0
 var _stack_reset_timer: SceneTreeTimer
 
+# Connect to combatant signals for floating text events
 func setup(combatant: Combatant, sprite: TextureRect) -> void:
 	_sprite_node = sprite
 	combatant.damage_taken.connect(_on_damage_taken)
@@ -35,12 +34,15 @@ func setup(combatant: Combatant, sprite: TextureRect) -> void:
 	for effect in combatant.cur_effects:
 		_prev_effects[effect] = combatant.cur_effects[effect]
 
+# Show red damage text
 func _on_damage_taken(amount: int) -> void:
 	_spawn_text("-%d HP" % amount, Color(0.9, 0.2, 0.2))
 
+# Show green healing text
 func _on_healed(amount: int) -> void:
 	_spawn_text("+%d HP" % amount, Color(0.2, 0.9, 0.4))
 
+# Show floating text when an effect is gained or lost
 func _on_effect_changed(effect: Effect.Type, new_amount: int) -> void:
 	var prev: int = _prev_effects.get(effect, 0)
 	var delta: int = new_amount - prev
@@ -60,6 +62,7 @@ func _on_effect_changed(effect: Effect.Type, new_amount: int) -> void:
 		# Dimmer color for loss
 		_spawn_text("%d %s" % [delta, effect_name], base_color.darkened(0.3))
 
+# Create a label that floats up and fades out near the sprite
 func _spawn_text(text: String, color: Color) -> void:
 	var label := Label.new()
 	label.text = text
@@ -97,9 +100,11 @@ func _spawn_text(text: String, color: Color) -> void:
 	tween.tween_property(label, "modulate:a", 0.0, 0.7).set_delay(0.3)
 	tween.chain().tween_callback(label.queue_free)
 
+# Reset the vertical stack counter for overlapping texts
 func _reset_stack() -> void:
 	_stack_count = 0
 
+# Return the display color for an effect type
 func _get_effect_color(effect: Effect.Type) -> Color:
 	match effect:
 		Effect.Type.DAMAGE: return Color(0.8, 0.2, 0.2, 0.8)

@@ -1,3 +1,4 @@
+# Button that triggers a combat roll when enabled
 extends Button
 
 signal roll_pressed
@@ -14,11 +15,13 @@ var rollable: bool = false:
 		else:
 			self_modulate = COLOR_GRAY
 
+# Start disabled until the player's turn
 func _ready() -> void:
 	text = "ROLL"
 	rollable = false
 	pressed.connect(_on_pressed)
 
+# Emit roll signal if the button is rollable
 func _on_pressed() -> void:
 	if rollable:
 		roll_pressed.emit()

@@ -1,5 +1,4 @@
-#Autoload for managing persistent data.
-
+# Autoload singleton storing persistent game state across scenes
 extends Node
 
 var enemy_order: Array[EnemyTemplate] = [load("res://Combat System/Enemies/mimic.tres"),load("res://Combat System/Enemies/earth_king.tres"),load("res://Combat System/Enemies/Aetherwyrm.tres")]
@@ -20,6 +19,7 @@ var player_health : int:
 var enemies_fought : int
 var player_items
 
+# Reset all game state to defaults for a new run
 func reset() -> void:
 	difficulty = 100
 	player_max_health = 50

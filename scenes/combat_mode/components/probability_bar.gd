@@ -1,3 +1,4 @@
+# Draws a colored bar showing item effect group weights with a roll spinner
 @tool
 class_name ProbabilityBar
 extends Control
@@ -13,18 +14,21 @@ const BAR_RADIUS: float = 12.0
 const BAR_HEIGHT: float = 32.0
 const SPINNER_WIDTH: float = 4.0
 
+# Move the spinner indicator to a normalized position
 func set_spinner(pos: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	spinner_position = pos
 	queue_redraw()
 
+# Hide the spinner indicator
 func hide_spinner() -> void:
 	if Engine.is_editor_hint():
 		return
 	spinner_position = -1.0
 	queue_redraw()
 
+# Draw the colored segments, dividers, and spinner
 func _draw() -> void:
 	if item == null or item.effect_groups.is_empty():
 		# Draw empty bar
@@ -85,6 +89,7 @@ func _draw() -> void:
 		])
 		draw_colored_polygon(tri, Color.WHITE)
 
+# Return a tooltip for the effect group under the cursor
 func _get_tooltip(at_position: Vector2) -> String:
 	if item == null or item.effect_groups.is_empty():
 		return ""
@@ -105,6 +110,7 @@ func _get_tooltip(at_position: Vector2) -> String:
 
 	return ""
 
+# Format the tooltip text for a single effect group
 func _build_group_tooltip(group: EffectGroup, total_weight: int) -> String:
 	var pct: int = int(round(float(group.weight) / float(total_weight) * 100.0))
 	var lines: PackedStringArray = ["%s  (%d/%d — %d%%)" % [group.label, group.weight, total_weight, pct]]
@@ -115,6 +121,7 @@ func _build_group_tooltip(group: EffectGroup, total_weight: int) -> String:
 		lines.append("  • " + _describe_effect(effect_type, amount))
 	return "\n".join(lines)
 
+# Return a human-readable description for an effect
 func _describe_effect(effect_type: int, amount: int) -> String:
 	match effect_type:
 		Effect.Type.DAMAGE:        return "Deal %d damage to target" % amount

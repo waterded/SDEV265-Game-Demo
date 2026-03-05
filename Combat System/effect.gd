@@ -1,16 +1,16 @@
-#Autoload Singleton
+# Defines all combat effect types as an enum
 extends Node
 enum Type {
 	DAMAGE,
 	ARMOR,
-	NEGATE, # negate  damage X times
+	NEGATE,
 	BLOCK,
 	POISON,
 	STUN,
-	CURSE, # shift enemy weight toward worse effects
+	CURSE,
 	LUCK,
-	ROLL_AGAIN, # no probability cost
+	ROLL_AGAIN,
 	MULTIPLY_NEXT,
 	HEAL,
-	NOTHING, # whiff / mis
+	NOTHING,
 }

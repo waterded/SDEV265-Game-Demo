@@ -1,3 +1,4 @@
+# Displays selectable item slots for the player during combat
 extends HBoxContainer
 
 signal item_selected(item: ItemTemplate)
@@ -12,16 +13,19 @@ const ICON_SIZE := Vector2(48, 48)
 const UNSELECTED_MODULATE := Color(0.4, 0.4, 0.4, 1.0)
 const SELECTED_MODULATE := Color(1.0, 0.3, 0.3, 1.0)
 
+# Initialize the slots with the player's items
 func setup(player_items: Array) -> void:
 	items = player_items
 	_build_slots()
 
+# Enable or disable mouse interaction on all slots
 func set_enabled(enabled: bool) -> void:
 	_enabled = enabled
 	for slot in _slots:
 		if slot.visible:
 			slot.mouse_filter = Control.MOUSE_FILTER_STOP if enabled else Control.MOUSE_FILTER_IGNORE
 
+# Create up to 3 item slots and populate them
 func _build_slots() -> void:
 	for child in get_children():
 		child.queue_free()
@@ -37,6 +41,7 @@ func _build_slots() -> void:
 		else:
 			slot.visible = false
 
+# Build a single slot with background and icon
 func _create_slot(index: int) -> Control:
 	var slot := Control.new()
 	slot.custom_minimum_size = SLOT_SIZE
@@ -68,12 +73,14 @@ func _create_slot(index: int) -> Control:
 	slot.gui_input.connect(_on_slot_input.bind(index))
 	return slot
 
+# Set the icon and tooltip for a slot
 func _populate_slot(slot: Control, item: ItemTemplate) -> void:
 	var icon: TextureRect = slot.get_node("Icon")
 	if item.icon:
 		icon.texture = item.icon
 	slot.tooltip_text = item.display_name
 
+# Handle click input on a slot
 func _on_slot_input(event: InputEvent, index: int) -> void:
 	if not _enabled:
 		return
@@ -81,11 +88,13 @@ func _on_slot_input(event: InputEvent, index: int) -> void:
 		if index < items.size():
 			_select(index)
 
+# Select an item and emit the signal
 func _select(index: int) -> void:
 	selected_index = index
 	_update_visuals()
 	item_selected.emit(items[index])
 
+# Highlight the selected slot and dim the others
 func _update_visuals() -> void:
 	for i in range(_slots.size()):
 		if not _slots[i].visible:

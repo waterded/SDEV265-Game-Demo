@@ -1,3 +1,4 @@
+# Data template defining an enemy's stats, sprite, and attack combos
 class_name EnemyTemplate
 extends Resource
 @export var enemy_name: String = "Default Enemy"

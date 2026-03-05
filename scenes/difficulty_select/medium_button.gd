@@ -1,5 +1,6 @@
 extends Button
 
+# Set medium difficulty stats and start combat
 func _on_pressed() -> void:
 	GameData.difficulty = 100
 	GameData.player_max_health = 50

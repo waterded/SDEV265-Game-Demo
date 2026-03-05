@@ -1,8 +1,8 @@
+# Displays active effect badges for a combatant
 @tool
 class_name EffectDisplay
 extends HBoxContainer
 
-# Maps Effect.Type to the label node showing its count
 var _effect_labels: Dictionary = {}
 
 const EFFECT_NAMES: Dictionary = {
@@ -20,6 +20,7 @@ const EFFECT_NAMES: Dictionary = {
 	Effect.Type.NOTHING: "---",
 }
 
+# Connect to a combatant's effect signals
 func setup(combatant: Combatant) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -28,6 +29,7 @@ func setup(combatant: Combatant) -> void:
 	for effect in combatant.cur_effects:
 		_on_effect_changed(effect, combatant.cur_effects[effect])
 
+# Add, update, or remove a badge when an effect changes
 func _on_effect_changed(effect: Effect.Type, new_amount: int) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -50,6 +52,7 @@ func _on_effect_changed(effect: Effect.Type, new_amount: int) -> void:
 	var effect_name: String = EFFECT_NAMES.get(effect, "???")
 	label.text = "%s %d" % [effect_name, new_amount]
 
+# Build a styled panel with a label for one effect type
 func _create_badge(effect: Effect.Type) -> PanelContainer:
 	var panel := PanelContainer.new()
 	var style := StyleBoxFlat.new()
@@ -73,6 +76,7 @@ func _create_badge(effect: Effect.Type) -> PanelContainer:
 	panel.custom_minimum_size = Vector2(50, 20)
 	return panel
 
+# Return the display color for an effect type
 func _get_effect_color(effect: Effect.Type) -> Color:
 	match effect:
 		Effect.Type.DAMAGE: return Color(0.8, 0.2, 0.2, 0.8)

@@ -1,3 +1,4 @@
+# Custom-drawn health bar with animated HP transitions
 @tool
 class_name CombatHealthBar
 extends Control
@@ -15,6 +16,7 @@ const DAMAGE_COLOR := Color(0.8, 0.2, 0.2)
 const LOW_HP_COLOR := Color(0.9, 0.3, 0.1)
 const BORDER_COLOR := Color(0.7, 0.7, 0.7, 0.6)
 
+# Connect to a combatant's hp_changed signal
 func setup(combatant: Combatant) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -24,6 +26,7 @@ func setup(combatant: Combatant) -> void:
 	combatant.hp_changed.connect(_on_hp_changed)
 	queue_redraw()
 
+# Tween the display HP to the new value
 func _on_hp_changed(new_hp: int, max_hp: int) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -34,10 +37,12 @@ func _on_hp_changed(new_hp: int, max_hp: int) -> void:
 	_tween = create_tween()
 	_tween.tween_method(_set_display_hp, _display_hp, float(_cur_hp), 0.4).set_ease(Tween.EASE_OUT)
 
+# Callback for the tween to update displayed HP
 func _set_display_hp(value: float) -> void:
 	_display_hp = value
 	queue_redraw()
 
+# Draw the health bar background, fill, border, and text
 func _draw() -> void:
 	var bar_rect := Rect2(Vector2.ZERO, Vector2(size.x, BAR_HEIGHT))
 
@@ -62,6 +67,7 @@ func _draw() -> void:
 	var text_pos := Vector2((size.x - text_size.x) * 0.5, (BAR_HEIGHT + text_size.y) * 0.5 - 2)
 	draw_string(font, text_pos, hp_text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
 
+# Draw a filled rounded rectangle
 func _draw_rounded_rect(rect: Rect2, color: Color) -> void:
 	if rect.size.x <= 0 or rect.size.y <= 0:
 		return
@@ -69,12 +75,14 @@ func _draw_rounded_rect(rect: Rect2, color: Color) -> void:
 	var points := _get_rounded_rect_points(rect, r)
 	draw_colored_polygon(points, color)
 
+# Draw the outline of a rounded rectangle
 func _draw_rounded_rect_outline(rect: Rect2, color: Color) -> void:
 	var r: float = minf(BAR_RADIUS, minf(rect.size.x * 0.5, rect.size.y * 0.5))
 	var points := _get_rounded_rect_points(rect, r)
 	points.append(points[0])
 	draw_polyline(points, color, 2.0)
 
+# Generate corner arc points for a rounded rectangle
 func _get_rounded_rect_points(rect: Rect2, radius: float) -> PackedVector2Array:
 	var points := PackedVector2Array()
 	var corners := [
@@ -93,5 +101,6 @@ func _get_rounded_rect_points(rect: Rect2, radius: float) -> PackedVector2Array:
 			points.append(center + Vector2(cos(angle), sin(angle)) * radius)
 	return points
 
+# Minimum size so the bar is always visible
 func _get_minimum_size() -> Vector2:
 	return Vector2(100, BAR_HEIGHT)

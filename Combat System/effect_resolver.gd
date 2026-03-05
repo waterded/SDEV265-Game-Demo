@@ -1,6 +1,8 @@
+# Resolves an effect by applying it to the correct combatant
 class_name EffectResolver
 extends RefCounted
 
+# Apply a single effect, scaling enemy damage by difficulty
 func apply_effect(effect: Effect.Type, amount: int, attacker: Combatant, target: Combatant) -> void:
 	if effect == Effect.Type.NOTHING:
 		return

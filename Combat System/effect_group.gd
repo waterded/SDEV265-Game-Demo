@@ -1,3 +1,4 @@
+# A weighted group of effects used as one outcome in an item roll
 class_name EffectGroup
 extends Resource
 

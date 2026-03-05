@@ -1,3 +1,4 @@
+# Orchestrates turn-based combat between player and enemy
 class_name CombatManager
 extends Node
 
@@ -13,6 +14,7 @@ var effect_resolver: EffectResolver
 var attack_que: AttackQue
 var _player_has_rolled: bool = false
 
+# Initialize combatants, wire UI, and begin the combat loop
 func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	effect_resolver = EffectResolver.new()
 	attack_que = AttackQue.new()
@@ -49,6 +51,7 @@ func start_combat(enemy_template: EnemyTemplate, player_ui, enemy_ui) -> void:
 	else:
 		SceneRelay.change_scene(SceneRelay.PLAYER_WIN)
 
+# Main combat loop alternating player and enemy turns
 func run_combat()-> void:
 	var in_combat: bool = true
 
@@ -84,16 +87,20 @@ func run_combat()-> void:
 
 		enemy.selected_item = attack_que.get_next()
 
+# Called by the UI when the player confirms their roll
 func confirm_roll() -> void:
 	_player_has_rolled = true
 
+# Check if either combatant has died
 func _check_death() -> bool:
 	return player.is_dead() or enemy.is_dead()
 
+# Sine-based easing curve for the roll animation
 func _roll_curve(x: float, t: float) -> float:
 	var inner: float = (asin(2.0 * t - 1.0) + 9.0 * PI) * (1.0 - pow(1.0 - x, 3.5)) - 9.0 * PI
 	return 0.5 + 0.5 * sin(inner)
 
+# Animate the probability bar spinner over time
 func _run_roll_animation(target: float, duration: float, who: Combatant) -> void:
 	var elapsed: float = 0.0
 	while elapsed < duration:
@@ -103,6 +110,7 @@ func _run_roll_animation(target: float, duration: float, who: Combatant) -> void
 		var value: float = _roll_curve(x, target)
 		roll_position_changed.emit(who, value)
 
+# Animate the luck shift on the probability bar
 func _run_luck_animation(from: float, to: float, duration: float, who: Combatant) -> void:
 	var elapsed: float = 0.0
 	while elapsed < duration:
@@ -112,6 +120,7 @@ func _run_luck_animation(from: float, to: float, duration: float, who: Combatant
 		var value: float = lerp(from, to, x)
 		roll_position_changed.emit(who, value)
 
+# Roll a random effect group index, applying luck modifiers
 func _get_roll_index(item: ItemTemplate, attacker: Combatant, time: float) -> int:
 	# Sum weights
 	var total_weight: int = 0
@@ -145,6 +154,7 @@ func _get_roll_index(item: ItemTemplate, attacker: Combatant, time: float) -> in
 
 	return index
 
+# Perform a roll, resolve effects, and handle roll-again
 func _do_roll(item: ItemTemplate, attacker: Combatant, target: Combatant) -> void:
 	var index: int
 	var rolling: bool = true
